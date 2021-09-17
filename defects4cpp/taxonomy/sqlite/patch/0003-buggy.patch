@@ -1,0 +1,24 @@
+From 86dee8c3d79ad2714a38ee2f934a8e1e1df70ea2 Mon Sep 17 00:00:00 2001
+From: Taekwang <tgheo@suresofttech.com>
+Date: Fri, 17 Sep 2021 12:10:37 +0900
+Subject: [PATCH] buggy
+
+---
+ src/whereexpr.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/whereexpr.c b/src/whereexpr.c
+index 30bf2a333..f547db4f0 100644
+--- a/src/whereexpr.c
++++ b/src/whereexpr.c
+@@ -1409,7 +1409,6 @@ static void exprAnalyze(
+       pNew->eOperator = (operatorMask(pDup->op) + eExtraOp) & opMask;
+     }else if( op==TK_ISNULL && 0==sqlite3ExprCanBeNull(pLeft) ){
+       pExpr->op = TK_TRUEFALSE;
+-      pExpr->u.zToken = "false";
+       ExprSetProperty(pExpr, EP_IsFalse);
+       pTerm->prereqAll = 0;
+       pTerm->eOperator = 0;
+-- 
+2.25.1
+

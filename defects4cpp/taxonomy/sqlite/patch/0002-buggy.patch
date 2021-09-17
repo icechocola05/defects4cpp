@@ -1,0 +1,25 @@
+From 09bdd2679ec668e22bfecc493bab4bc8573f7315 Mon Sep 17 00:00:00 2001
+From: Taekwang <tgheo@suresofttech.com>
+Date: Fri, 17 Sep 2021 11:46:26 +0900
+Subject: [PATCH] buggy
+
+---
+ src/vdbetrace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/vdbetrace.c b/src/vdbetrace.c
+index 1095e7f58..32c66af22 100644
+--- a/src/vdbetrace.c
++++ b/src/vdbetrace.c
+@@ -125,7 +125,7 @@ char *sqlite3VdbeExpandSql(
+         assert( idx>0 );
+       }
+       zRawSql += nToken;
+-      nextIndex = MAX(idx + 1, nextIndex);
++      nextIndex = idx + 1;
+       assert( idx>0 && idx<=p->nVar );
+       pVar = &p->aVar[idx-1];
+       if( pVar->flags & MEM_Null ){
+-- 
+2.25.1
+

@@ -1,0 +1,68 @@
+{
+  "info": {
+    "url": "https://github.com/sqlite/sqlite",
+    "short-desc": "This repository contains the complete source code for the SQLite database engine.",
+    "vcs": "git"
+  },
+  "common": {
+    "build": {
+      "command": [
+        "./configure CFLAGS='--coverage -g -O0 -fprofile-arcs -ftest-coverage' LDFLAGS=-lgcov ",
+        "make clean",
+        "make sqlite3.c",
+        "make -j4"
+      ]
+    },
+    "build-coverage": {
+      "command": [
+        "./configure CFLAGS='--coverage -g -O0 -fprofile-arcs -ftest-coverage' LDFLAGS=-lgcov ",
+        "make clean",
+        "make sqlite3.c",
+        "make -j4"
+      ]
+    },
+    "test-type": "automake",
+    "test": {
+      "command": [
+        "make -j4 test"
+      ]
+    },
+    "test-coverage": {
+      "command": [
+        "make -j4 test"
+      ]
+    },
+    "gcov": {
+      "exclude": [],
+      "command": [
+        "bash -c 'find . -maxdepth 1 -type f \\( -name \"*.c\" -or -name \"*.h\" \\) -exec gcov --preserve-paths {} --object-directory .libs\\;'",
+        "bash -c 'mkdir gcov; find src -type f -name \"*.gcov\" -exec mv {} /home/workspace/gcov \\;'",
+        "find . -type f -name \"*.gcda\" -delete",
+        "bash -c \"cd gcov && gcovr -g --html > coverage.html\""
+      ]
+    }
+  },
+  "defects": [
+    {
+      "hash": "0d08072b689e6ba734874d7b119b82698420628b",
+      "patch": 1,
+      "num_cases": 1,
+      "case": [1],
+      "description": "Fix another problem with RETURNING clauses in UPDATEs against tables …"
+    },
+    {
+      "hash": "13dd0228d318e98346adc1b4021d44dfd8869a7a",
+      "patch": 2,
+      "num_cases": 1,
+      "case": [1],
+      "description": "Fix a problem with sqlite3_expanded_sql() that could occur with state…"
+    },
+    {
+      "hash": "15de3ce9abaf4ebcc6c556faea743c976c7da8d1",
+      "patch": 3,
+      "num_cases": 1, 
+      "case": [1],
+      "description": "Fix a segfault that could occur when optimizing a NOT NULL constraint…"
+    }
+  ]
+}

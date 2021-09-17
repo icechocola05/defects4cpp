@@ -1,0 +1,27 @@
+From 55fa9c8488cfe3d556ec8fe617913d7a4d846d04 Mon Sep 17 00:00:00 2001
+From: Taekwang <tgheo@suresofttech.com>
+Date: Mon, 13 Sep 2021 14:14:41 +0900
+Subject: [PATCH] buggy
+
+---
+ src/resolve.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/resolve.c b/src/resolve.c
+index 668498cb9..c60c2f931 100644
+--- a/src/resolve.c
++++ b/src/resolve.c
+@@ -436,8 +436,8 @@ static int lookupName(
+             pExpr->y.pTab = pTab;
+             if( pParse->bReturning ){
+               eNewExprOp = TK_REGISTER;
+-              pExpr->iTable = pNC->uNC.iBaseReg + (pTab->nCol+1)*pExpr->iTable +
+-                 sqlite3TableColumnToStorage(pTab, iCol) + 1;
++              pExpr->iTable = pNC->uNC.iBaseReg + (pTab->nCol+1)*pExpr->iTable
++                                + iCol + 1;
+             }else{
+               pExpr->iColumn = (i16)iCol;
+               eNewExprOp = TK_TRIGGER;
+-- 
+2.25.1
+
