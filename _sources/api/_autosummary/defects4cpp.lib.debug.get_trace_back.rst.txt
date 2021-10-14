@@ -1,0 +1,6 @@
+defects4cpp.lib.debug.get\_trace\_back
+======================================
+
+.. currentmodule:: defects4cpp.lib.debug
+
+.. autofunction:: get_trace_back

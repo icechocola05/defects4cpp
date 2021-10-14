@@ -1,0 +1,38 @@
+﻿defects4cpp.message.message
+===========================
+
+.. automodule:: defects4cpp.message.message
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      blank
+      command
+      docker
+      error
+      info
+      info2
+      kind
+      step
+      warning
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

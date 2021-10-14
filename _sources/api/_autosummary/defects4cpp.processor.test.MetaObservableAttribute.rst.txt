@@ -1,0 +1,28 @@
+defects4cpp.processor.test.MetaObservableAttribute
+==================================================
+
+.. currentmodule:: defects4cpp.processor.test
+
+.. autoclass:: MetaObservableAttribute
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :no-special-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MetaObservableAttribute.__init__
+      ~MetaObservableAttribute.mro
+      ~MetaObservableAttribute.wrap
+   
+   
+
+   
+   
+   

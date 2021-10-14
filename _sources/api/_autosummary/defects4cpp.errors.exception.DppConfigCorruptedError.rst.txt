@@ -1,0 +1,6 @@
+defects4cpp.errors.exception.DppConfigCorruptedError
+====================================================
+
+.. currentmodule:: defects4cpp.errors.exception
+
+.. autoexception:: DppConfigCorruptedError

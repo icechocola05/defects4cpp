@@ -1,0 +1,6 @@
+defects4cpp.message.message.info2
+=================================
+
+.. currentmodule:: defects4cpp.message.message
+
+.. autofunction:: info2

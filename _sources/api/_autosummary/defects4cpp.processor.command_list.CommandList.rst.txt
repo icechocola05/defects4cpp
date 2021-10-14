@@ -1,0 +1,35 @@
+defects4cpp.processor.command\_list.CommandList
+===============================================
+
+.. currentmodule:: defects4cpp.processor.command_list
+
+.. autoclass:: CommandList
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :no-special-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CommandList.__init__
+      ~CommandList.clear
+      ~CommandList.get
+      ~CommandList.items
+      ~CommandList.keys
+      ~CommandList.pop
+      ~CommandList.popitem
+      ~CommandList.setdefault
+      ~CommandList.update
+      ~CommandList.values
+   
+   
+
+   
+   
+   

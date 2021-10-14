@@ -1,0 +1,35 @@
+.. _taxonomy:
+
+A List of Defect Taxonomy
+=========================
+
+.. list-table:: Defect Taxonomy
+   :widths: 40 40
+   :header-rows: 1
+
+   * - Project
+     - # of bugs
+   * - xbps
+     - 5
+   * - proj
+     - 28
+   * - libsndfile
+     - 4
+   * - wireshark
+     - 6
+   * - wget2
+     - 3
+   * - openssl
+     - 31
+   * - zsh
+     - 5
+   * - libchewing
+     - 8
+   * - libssh
+     - 1
+   * - libucl
+     - 7
+   * - yara
+     - 6
+   * - cppcheck
+     - 30

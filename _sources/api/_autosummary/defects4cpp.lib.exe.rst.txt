@@ -1,0 +1,30 @@
+﻿defects4cpp.lib.exe
+===================
+
+.. automodule:: defects4cpp.lib.exe
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      run_cmd
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

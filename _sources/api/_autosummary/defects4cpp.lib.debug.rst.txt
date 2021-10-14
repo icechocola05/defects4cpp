@@ -1,0 +1,30 @@
+﻿defects4cpp.lib.debug
+=====================
+
+.. automodule:: defects4cpp.lib.debug
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      get_trace_back
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

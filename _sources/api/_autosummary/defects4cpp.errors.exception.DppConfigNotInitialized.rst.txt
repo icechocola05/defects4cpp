@@ -1,0 +1,6 @@
+defects4cpp.errors.exception.DppConfigNotInitialized
+====================================================
+
+.. currentmodule:: defects4cpp.errors.exception
+
+.. autoexception:: DppConfigNotInitialized

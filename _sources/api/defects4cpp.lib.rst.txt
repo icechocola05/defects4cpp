@@ -1,0 +1,22 @@
+
+
+
+
+
+defects4cpp.lib
+===============
+
+
+
+
+
+Modules Summary
+
+.. autosummary::
+   :toctree: _autosummary
+   :template: autosummary_module.rst
+
+   ~defects4cpp.lib.debug
+
+   ~defects4cpp.lib.exe
+

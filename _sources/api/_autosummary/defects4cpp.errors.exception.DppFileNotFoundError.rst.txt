@@ -1,0 +1,6 @@
+defects4cpp.errors.exception.DppFileNotFoundError
+=================================================
+
+.. currentmodule:: defects4cpp.errors.exception
+
+.. autoexception:: DppFileNotFoundError

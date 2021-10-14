@@ -1,0 +1,26 @@
+
+
+
+
+
+defects4cpp.processor.core
+==========================
+
+
+
+
+
+Modules Summary
+
+.. autosummary::
+   :toctree: _autosummary
+   :template: autosummary_module.rst
+
+   ~defects4cpp.processor.core.argparser
+
+   ~defects4cpp.processor.core.command
+
+   ~defects4cpp.processor.core.docker
+
+   ~defects4cpp.processor.core.shell
+

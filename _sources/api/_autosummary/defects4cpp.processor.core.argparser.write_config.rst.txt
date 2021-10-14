@@ -1,0 +1,6 @@
+defects4cpp.processor.core.argparser.write\_config
+==================================================
+
+.. currentmodule:: defects4cpp.processor.core.argparser
+
+.. autofunction:: write_config

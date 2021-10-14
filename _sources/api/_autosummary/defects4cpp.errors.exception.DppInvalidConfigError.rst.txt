@@ -1,0 +1,6 @@
+defects4cpp.errors.exception.DppInvalidConfigError
+==================================================
+
+.. currentmodule:: defects4cpp.errors.exception
+
+.. autoexception:: DppInvalidConfigError

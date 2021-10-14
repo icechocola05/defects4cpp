@@ -1,0 +1,6 @@
+defects4cpp.errors.exception.DppCommandListInternalError
+========================================================
+
+.. currentmodule:: defects4cpp.errors.exception
+
+.. autoexception:: DppCommandListInternalError
