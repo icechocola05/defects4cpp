@@ -204,11 +204,11 @@
 <h1 id="api-autosummary-defects4cpp-processor-build-buildcommandscript--page-root">defects4cpp.processor.build.BuildCommandScript<a class="headerlink" href="#api-autosummary-defects4cpp-processor-build-buildcommandscript--page-root" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="defects4cpp.processor.build.BuildCommandScript">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">BuildCommandScript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/build.html#BuildCommandScript"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.build.BuildCommandScript" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">BuildCommandScript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/build.html#BuildCommandScript"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.build.BuildCommandScript" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">processor.core.command.DockerCommandScript</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.build.BuildCommandScript.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/build.html#BuildCommandScript.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.build.BuildCommandScript.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/build.html#BuildCommandScript.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.build.BuildCommandScript.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
@@ -217,7 +217,7 @@
 <col style="width: 90%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.build.BuildCommandScript.__init__" title="defects4cpp.processor.build.BuildCommandScript.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.build.BuildCommandScript.__init__" title="defects4cpp.processor.build.BuildCommandScript.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(verbose, *args, **kwargs)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.build.BuildCommandScript.after" title="defects4cpp.processor.build.BuildCommandScript.after"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after</span></code></a>()</p></td>
@@ -236,6 +236,9 @@
 </dd>
 </dl>
 </p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.build.BuildCommandScript.step" title="defects4cpp.processor.build.BuildCommandScript.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(linenr, line)</p></td>
+<td><p>Invoked before each line is executed.</p></td>
 </tr>
 </tbody>
 </table>
@@ -276,6 +279,19 @@ otherwise if it is sent to a container line by line.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="defects4cpp.processor.build.BuildCommandScript.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linenr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/build.html#BuildCommandScript.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.build.BuildCommandScript.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoked before each line is executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>linenr</strong> (<em>int</em>) – The current line number.</p></li>
+<li><p><strong>line</strong> (<em>str</em>) – The current line to execute.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

@@ -22,6 +22,7 @@ defects4cpp.processor.test.CoverageTestCommandScript
       ~CoverageTestCommandScript.before
       ~CoverageTestCommandScript.output
       ~CoverageTestCommandScript.should_be_run_at_once
+      ~CoverageTestCommandScript.step
    
    
 

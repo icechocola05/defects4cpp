@@ -22,6 +22,7 @@ defects4cpp.processor.build.BuildCommandScript
       ~BuildCommandScript.before
       ~BuildCommandScript.output
       ~BuildCommandScript.should_be_run_at_once
+      ~BuildCommandScript.step
    
    
 

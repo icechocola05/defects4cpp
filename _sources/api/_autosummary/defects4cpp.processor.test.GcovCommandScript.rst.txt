@@ -22,6 +22,7 @@ defects4cpp.processor.test.GcovCommandScript
       ~GcovCommandScript.before
       ~GcovCommandScript.output
       ~GcovCommandScript.should_be_run_at_once
+      ~GcovCommandScript.step
    
    
 
