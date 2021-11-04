@@ -1,6 +1,0 @@
-defects4cpp.errors.exception.DppDefectIndexError
-================================================
-
-.. currentmodule:: defects4cpp.errors.exception
-
-.. autoexception:: DppDefectIndexError

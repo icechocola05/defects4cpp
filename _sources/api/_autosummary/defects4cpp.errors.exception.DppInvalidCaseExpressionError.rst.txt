@@ -1,6 +1,0 @@
-defects4cpp.errors.exception.DppInvalidCaseExpressionError
-==========================================================
-
-.. currentmodule:: defects4cpp.errors.exception
-
-.. autoexception:: DppInvalidCaseExpressionError

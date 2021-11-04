@@ -201,19 +201,32 @@
 <span class="sd">"""</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">textwrap</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">import</span> <span class="nn">errors</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="p">(</span><span class="n">DppArgparseConfigCorruptedError</span><span class="p">,</span> <span class="n">DppArgparseDefectIndexError</span><span class="p">,</span> <span class="n">DppArgparseFileNotFoundError</span><span class="p">,</span>
+                    <span class="n">DppArgparseInvalidConfigError</span><span class="p">,</span> <span class="n">DppArgparseNotProjectDirectory</span><span class="p">,</span> <span class="n">DppArgparseTaxonomyNotFoundError</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">processor.core.docker</span> <span class="kn">import</span> <span class="n">Worktree</span>
 <span class="kn">from</span> <span class="nn">taxonomy</span> <span class="kn">import</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Taxonomy</span>
 
+<span class="n">_NAMESPACE_ATTR_INDEX</span> <span class="o">=</span> <span class="s2">"index"</span>
+<span class="n">_NAMESPACE_ATTR_BUGGY</span> <span class="o">=</span> <span class="s2">"buggy"</span>
+<span class="n">_NAMESPACE_ATTR_WORKSPACE</span> <span class="o">=</span> <span class="s2">"workspace"</span>
 <span class="n">_NAMESPACE_ATTR_PATH</span> <span class="o">=</span> <span class="s2">"path"</span>
 <span class="n">_NAMESPACE_ATTR_PATH_CONFIG_NAME</span> <span class="o">=</span> <span class="s2">".defects4cpp.json"</span>
 <span class="n">_NAMESPACE_ATTR_METADATA</span> <span class="o">=</span> <span class="s2">"metadata"</span>
-<span class="n">_NAMESPACE_ATTR_WORKTREE</span> <span class="o">=</span> <span class="s2">"worktree"</span>
+
+
+<span class="k">def</span> <span class="nf">_set_worktree</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">worktree</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Worktree</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Worktree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buggy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">)</span>
+
+    <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">worktree</span><span class="o">.</span><span class="vm">__name__</span><span class="p">):</span>
+        <span class="n">new_cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">(</span><span class="bp">cls</span><span class="p">,),</span> <span class="p">{})</span>
+        <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">=</span> <span class="n">new_cls</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">new_cls</span><span class="p">,</span> <span class="n">worktree</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">worktree</span><span class="p">))</span>
 
 
 <div class="viewcode-block" id="read_config"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.argparser.read_config.html#defects4cpp.processor.core.argparser.read_config">[docs]</a><span class="k">def</span> <span class="nf">read_config</span><span class="p">(</span><span class="n">project_dir</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">MetaData</span><span class="p">,</span> <span class="n">Worktree</span><span class="p">]:</span>
@@ -234,14 +247,14 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">project_dir</span><span class="p">)</span> <span class="o">/</span> <span class="n">_NAMESPACE_ATTR_PATH_CONFIG_NAME</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppFileNotFoundError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">DppArgparseFileNotFoundError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppInvalidConfigError</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">DppArgparseInvalidConfigError</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">worktree</span> <span class="o">=</span> <span class="n">Worktree</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppConfigCorruptedError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">DppArgparseConfigCorruptedError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="n">t</span> <span class="o">=</span> <span class="n">Taxonomy</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="n">worktree</span><span class="o">.</span><span class="n">project_name</span><span class="p">],</span> <span class="n">worktree</span></div>
@@ -268,7 +281,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">worktree</span><span class="p">),</span> <span class="n">fp</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppFileNotFoundError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="n">DppArgparseFileNotFoundError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ValidateProjectPath"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.argparser.ValidateProjectPath.html#defects4cpp.processor.core.argparser.ValidateProjectPath">[docs]</a><span class="k">class</span> <span class="nc">ValidateProjectPath</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
@@ -285,11 +298,14 @@
     <span class="p">):</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">_NAMESPACE_ATTR_PATH_CONFIG_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppTaxonomyNotProjectDirectory</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">DppArgparseNotProjectDirectory</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
         <span class="n">metadata</span><span class="p">,</span> <span class="n">worktree</span> <span class="o">=</span> <span class="n">read_config</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
+        <span class="n">_set_worktree</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_METADATA</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_WORKTREE</span><span class="p">,</span> <span class="n">worktree</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_INDEX</span><span class="p">,</span> <span class="n">worktree</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_BUGGY</span><span class="p">,</span> <span class="n">worktree</span><span class="o">.</span><span class="n">buggy</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_WORKSPACE</span><span class="p">,</span> <span class="n">worktree</span><span class="o">.</span><span class="n">workspace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_PATH</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span></div>
 
 
@@ -308,7 +324,9 @@
         <span class="n">t</span> <span class="o">=</span> <span class="n">Taxonomy</span><span class="p">()</span>
         <span class="c1"># Probably redundant to check 'values' exists in keys.</span>
         <span class="k">if</span> <span class="n">values</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppTaxonomyNotFoundError</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">DppArgparseTaxonomyNotFoundError</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+        <span class="n">_set_worktree</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_METADATA</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">values</span><span class="p">])</span></div>
 
 
@@ -326,9 +344,9 @@
     <span class="p">):</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="n">namespace</span><span class="o">.</span><span class="n">metadata</span>
         <span class="k">if</span> <span class="n">values</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">defects</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">values</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DppDefectIndexError</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">DppArgparseDefectIndexError</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_WORKTREE</span><span class="p">,</span> <span class="n">Worktree</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+        <span class="n">_set_worktree</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></div>
 
 
@@ -344,9 +362,7 @@
         <span class="n">values</span><span class="p">,</span>
         <span class="n">option_string</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="n">worktree</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_WORKTREE</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">worktree</span><span class="p">:</span>
-            <span class="n">worktree</span><span class="o">.</span><span class="n">buggy</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">_set_worktree</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
 
 
@@ -362,9 +378,7 @@
         <span class="n">values</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">option_string</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="n">worktree</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">_NAMESPACE_ATTR_WORKTREE</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">worktree</span><span class="p">:</span>
-            <span class="n">worktree</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="n">_set_worktree</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></div>
 
 
@@ -401,7 +415,7 @@
         <span class="n">action</span><span class="o">=</span><span class="n">ValidateTaxonomy</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">"index"</span><span class="p">,</span>
+        <span class="n">_NAMESPACE_ATTR_INDEX</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s2">"index of defects."</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="n">ValidateIndex</span><span class="p">,</span>
@@ -409,7 +423,7 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">"-b"</span><span class="p">,</span>
         <span class="s2">"--buggy"</span><span class="p">,</span>
-        <span class="n">dest</span><span class="o">=</span><span class="s2">"buggy"</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="n">_NAMESPACE_ATTR_BUGGY</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s2">"checkout a buggy commit."</span><span class="p">,</span>
         <span class="n">nargs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="n">ValidateBuggy</span><span class="p">,</span>
@@ -418,7 +432,7 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">"-t"</span><span class="p">,</span>
         <span class="s2">"--target"</span><span class="p">,</span>
-        <span class="n">dest</span><span class="o">=</span><span class="s2">"workspace"</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="n">_NAMESPACE_ATTR_WORKSPACE</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s2">"checkout to the specified directory instead of the current directory."</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="n">ValidateWorkspace</span><span class="p">,</span>

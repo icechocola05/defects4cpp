@@ -1,6 +1,0 @@
-defects4cpp.errors.exception.DppCaseExpressionInternalError
-===========================================================
-
-.. currentmodule:: defects4cpp.errors.exception
-
-.. autoexception:: DppCaseExpressionInternalError

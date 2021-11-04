@@ -35,5 +35,5 @@ Modules Summary
    :toctree: _autosummary
    :template: autosummary_module.rst
 
-   ~defects4cpp.d++
+   ~defects4cpp.dpp
 

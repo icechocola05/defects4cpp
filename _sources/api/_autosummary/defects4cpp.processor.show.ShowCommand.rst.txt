@@ -30,6 +30,5 @@ defects4cpp.processor.show.ShowCommand
    
       ~ShowCommand.group
       ~ShowCommand.help
-      ~ShowCommand.parser
    
    

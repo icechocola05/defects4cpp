@@ -24,8 +24,8 @@
       CoverageTestCommandScript
       GcovCommandScript
       ManagedAttribute
-      MetaObservableAttribute
       ObservableAttribute
+      ObservableAttributeMeta
       SetupTestCommandScript
       TestCommand
       TestCommandScript

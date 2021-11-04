@@ -1,6 +1,0 @@
-defects4cpp.message.message.warning
-===================================
-
-.. currentmodule:: defects4cpp.message.message
-
-.. autofunction:: warning

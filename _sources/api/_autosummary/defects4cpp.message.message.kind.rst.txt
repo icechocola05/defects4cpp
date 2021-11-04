@@ -1,6 +1,0 @@
-defects4cpp.message.message.kind
-================================
-
-.. currentmodule:: defects4cpp.message.message
-
-.. autofunction:: kind

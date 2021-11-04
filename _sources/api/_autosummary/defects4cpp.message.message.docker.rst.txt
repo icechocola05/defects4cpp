@@ -1,6 +1,0 @@
-defects4cpp.message.message.docker
-==================================
-
-.. currentmodule:: defects4cpp.message.message
-
-.. autofunction:: docker

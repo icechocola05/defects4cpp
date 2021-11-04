@@ -8,6 +8,15 @@ defects4cpp.errors
 
 
 
+Subpackage
+
+.. toctree::
+   :maxdepth: 1
+
+   defects4cpp.errors.common
+
+
+
 
 
 Modules Summary
@@ -16,5 +25,11 @@ Modules Summary
    :toctree: _autosummary
    :template: autosummary_module.rst
 
-   ~defects4cpp.errors.exception
+   ~defects4cpp.errors.argparser
+
+   ~defects4cpp.errors.checkout
+
+   ~defects4cpp.errors.docker
+
+   ~defects4cpp.errors.internal
 

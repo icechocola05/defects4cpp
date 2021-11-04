@@ -1,0 +1,31 @@
+﻿defects4cpp.errors.docker
+=========================
+
+.. automodule:: defects4cpp.errors.docker
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      DppDockerError
+      DppDockerNoClientError
+   
+   
+
+
+

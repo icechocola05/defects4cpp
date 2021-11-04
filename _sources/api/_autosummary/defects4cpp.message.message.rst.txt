@@ -9,21 +9,6 @@
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-      :toctree:
-   
-      blank
-      command
-      docker
-      error
-      info
-      info2
-      kind
-      step
-      warning
-   
    
 
    
