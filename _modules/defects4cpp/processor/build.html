@@ -200,12 +200,20 @@
 <span class="sd">Compile projects inside a container.</span>
 <span class="sd">"""</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">import</span> <span class="nn">taxonomy</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">taxonomy</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">MetaData</span>
+
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
-<span class="kn">from</span> <span class="nn">processor.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">DockerCommand</span><span class="p">,</span> <span class="n">DockerCommandScript</span><span class="p">,</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">,</span> <span class="n">Worktree</span><span class="p">,</span>
-                            <span class="n">create_common_project_parser</span><span class="p">,</span> <span class="n">read_config</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">processor.core</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DockerCommand</span><span class="p">,</span>
+    <span class="n">DockerCommandScript</span><span class="p">,</span>
+    <span class="n">DockerCommandScriptGenerator</span><span class="p">,</span>
+    <span class="n">Worktree</span><span class="p">,</span>
+    <span class="n">create_common_project_parser</span><span class="p">,</span>
+    <span class="n">read_config</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="BuildCommandScript"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScript.html#defects4cpp.processor.build.BuildCommandScript">[docs]</a><span class="k">class</span> <span class="nc">BuildCommandScript</span><span class="p">(</span><span class="n">DockerCommandScript</span><span class="p">):</span>
@@ -234,8 +242,8 @@
 <div class="viewcode-block" id="BuildCommandScriptGenerator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScriptGenerator.html#defects4cpp.processor.build.BuildCommandScriptGenerator">[docs]</a><span class="k">class</span> <span class="nc">BuildCommandScriptGenerator</span><span class="p">(</span><span class="n">DockerCommandScriptGenerator</span><span class="p">):</span>
 <div class="viewcode-block" id="BuildCommandScriptGenerator.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScriptGenerator.html#defects4cpp.processor.build.BuildCommandScriptGenerator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">command</span><span class="p">:</span> <span class="s2">"taxonomy.Command"</span><span class="p">,</span>
-        <span class="n">metadata</span><span class="p">:</span> <span class="s2">"taxonomy.MetaData"</span><span class="p">,</span>
+        <span class="n">command</span><span class="p">:</span> <span class="s2">"Command"</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="s2">"MetaData"</span><span class="p">,</span>
         <span class="n">worktree</span><span class="p">:</span> <span class="n">Worktree</span><span class="p">,</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="p">):</span>
@@ -251,7 +259,14 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># TODO: write argparse description in detail</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">create_common_project_parser</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">"d++ build PATH [--coverage] [-v|--verbose]"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">"-e"</span><span class="p">,</span>
+            <span class="s2">"--export"</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">"export"</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">"export build commands."</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">"store_true"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">"d++ build PATH [--coverage] [-v|--verbose] [-e|--export]"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
             <span class="sd">"""\</span>
 <span class="sd">        Build project inside docker.</span>
@@ -262,10 +277,9 @@
         <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
 
         <span class="n">metadata</span><span class="p">,</span> <span class="n">worktree</span> <span class="o">=</span> <span class="n">read_config</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">common</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common_capture</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">export</span> <span class="k">else</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span>
         <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">build_coverage_command</span>
-            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">coverage</span>
-            <span class="k">else</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">build_command</span>
+            <span class="n">common</span><span class="o">.</span><span class="n">build_coverage_command</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">coverage</span> <span class="k">else</span> <span class="n">common</span><span class="o">.</span><span class="n">build_command</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">BuildCommandScriptGenerator</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">worktree</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div>
 
@@ -274,7 +288,7 @@
         <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">generator</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">] start building"</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BuildCommand.teardown"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.teardown">[docs]</a>    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator</span><span class="p">:</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">):</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"done"</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">"done"</span><span class="p">)</span>
         <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">generator</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">] done"</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>

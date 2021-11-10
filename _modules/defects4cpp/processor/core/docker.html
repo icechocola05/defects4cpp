@@ -199,7 +199,6 @@
 
 <span class="sd">Do not use docker SDK directly, instead use Docker class.</span>
 <span class="sd">"""</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">PurePosixPath</span>
@@ -352,7 +351,7 @@
                 <span class="p">)</span>
             <span class="p">),</span>
         <span class="p">)</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress_detail</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Starting container"</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress_detail</span><span class="p">(</span><span class="s2">"Starting container"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_container</span> <span class="o">=</span> <span class="n">_cast_container</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span>
@@ -370,7 +369,7 @@
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
         <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"container.__exit__ (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
-        <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress_detail</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing container"</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress_detail</span><span class="p">(</span><span class="s2">"Closing container"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_container</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Docker.send"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.docker.Docker.html#defects4cpp.processor.core.docker.Docker.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExecResult</span><span class="p">:</span>

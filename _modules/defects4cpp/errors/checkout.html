@@ -195,11 +195,13 @@
             
   <h1 id="modules-defects4cpp-errors-checkout--page-root">Source code for defects4cpp.errors.checkout</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">git</span>
-<span class="kn">import</span> <span class="nn">taxonomy</span>
 <span class="kn">from</span> <span class="nn">errors.common.exception</span> <span class="kn">import</span> <span class="n">DppError</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">taxonomy.taxonomy</span> <span class="kn">import</span> <span class="n">Defect</span><span class="p">,</span> <span class="n">MetaData</span>
 
 
 <div class="viewcode-block" id="DppGitError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.checkout.DppGitError.html#defects4cpp.errors.checkout.DppGitError">[docs]</a><span class="k">class</span> <span class="nc">DppGitError</span><span class="p">(</span><span class="n">DppError</span><span class="p">):</span>
@@ -209,7 +211,7 @@
 <div class="viewcode-block" id="DppGitCloneError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.checkout.DppGitCloneError.html#defects4cpp.errors.checkout.DppGitCloneError">[docs]</a><span class="k">class</span> <span class="nc">DppGitCloneError</span><span class="p">(</span><span class="n">DppGitError</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">metadata</span><span class="p">:</span> <span class="s2">"taxonomy.MetaData"</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="s2">"MetaData"</span><span class="p">,</span>
         <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">command</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
         <span class="n">status</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">],</span>
@@ -238,7 +240,7 @@
 
 
 <div class="viewcode-block" id="DppGitWorktreeError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.checkout.DppGitWorktreeError.html#defects4cpp.errors.checkout.DppGitWorktreeError">[docs]</a><span class="k">class</span> <span class="nc">DppGitWorktreeError</span><span class="p">(</span><span class="n">DppGitError</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"taxonomy.Defect"</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"Defect"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defect</span> <span class="o">=</span> <span class="n">defect</span>
@@ -255,7 +257,7 @@
 
 
 <div class="viewcode-block" id="DppGitCheckoutInvalidRepositoryError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.checkout.DppGitCheckoutInvalidRepositoryError.html#defects4cpp.errors.checkout.DppGitCheckoutInvalidRepositoryError">[docs]</a><span class="k">class</span> <span class="nc">DppGitCheckoutInvalidRepositoryError</span><span class="p">(</span><span class="n">DppGitError</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"taxonomy.Defect"</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"Defect"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defect</span> <span class="o">=</span> <span class="n">defect</span>
@@ -272,7 +274,7 @@
 
 
 <div class="viewcode-block" id="DppGitCheckoutError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.checkout.DppGitCheckoutError.html#defects4cpp.errors.checkout.DppGitCheckoutError">[docs]</a><span class="k">class</span> <span class="nc">DppGitCheckoutError</span><span class="p">(</span><span class="n">DppGitError</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"taxonomy.Defect"</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defect</span><span class="p">:</span> <span class="s2">"Defect"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defect</span> <span class="o">=</span> <span class="n">defect</span>
