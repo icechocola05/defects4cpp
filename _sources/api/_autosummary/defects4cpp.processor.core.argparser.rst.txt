@@ -31,6 +31,7 @@
       :template: autosummary_class.rst
    
       ValidateBuggy
+      ValidateEnviron
       ValidateIndex
       ValidateProjectPath
       ValidateTaxonomy

@@ -205,7 +205,7 @@
 <h1 id="api-autosummary-defects4cpp-processor-core-command-dockercommand--page-root">defects4cpp.processor.core.command.DockerCommand<a class="headerlink" href="#api-autosummary-defects4cpp-processor-core-command-dockercommand--page-root" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="defects4cpp.processor.core.command.DockerCommand">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DockerCommand</span></span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DockerCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">argparse.ArgumentParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="defects4cpp.processor.core.command.Command.html#defects4cpp.processor.core.command.Command" title="defects4cpp.processor.core.command.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">defects4cpp.processor.core.command.Command</span></code></a></p>
 <p>Executes each command of DockerCommandLine one by one inside a docker container.
 Inherit from this class to implement a new command that should be run inside a docker.</p>
@@ -216,7 +216,7 @@ Inherit from this class to implement a new command that should be run inside a d
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.core.command.DockerCommand.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">argparse.ArgumentParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
@@ -225,10 +225,10 @@ Inherit from this class to implement a new command that should be run inside a d
 <col style="width: 90%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.core.command.DockerCommand.__init__" title="defects4cpp.processor.core.command.DockerCommand.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.core.command.DockerCommand.__init__" title="defects4cpp.processor.core.command.DockerCommand.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(parser)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.core.command.DockerCommand.create_script_generator" title="defects4cpp.processor.core.command.DockerCommand.create_script_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_script_generator</span></code></a>(argv)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.core.command.DockerCommand.create_script_generator" title="defects4cpp.processor.core.command.DockerCommand.create_script_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_script_generator</span></code></a>(args)</p></td>
 <td><p>Return DockerExecInfo which has information of a command list to run inside docker container.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.core.command.DockerCommand.setup" title="defects4cpp.processor.core.command.DockerCommand.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a>(generator)</p></td>
@@ -259,11 +259,11 @@ Inherit from this class to implement a new command that should be run inside a d
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.core.command.DockerCommand.create_script_generator">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">create_script_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="defects4cpp.processor.core.command.DockerCommandScriptGenerator.html#defects4cpp.processor.core.command.DockerCommandScriptGenerator" title="defects4cpp.processor.core.command.DockerCommandScriptGenerator"><span class="pre">defects4cpp.processor.core.command.DockerCommandScriptGenerator</span></a></span></span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand.create_script_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand.create_script_generator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">create_script_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">argparse.Namespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="defects4cpp.processor.core.command.DockerCommandScriptGenerator.html#defects4cpp.processor.core.command.DockerCommandScriptGenerator" title="defects4cpp.processor.core.command.DockerCommandScriptGenerator"><span class="pre">defects4cpp.processor.core.command.DockerCommandScriptGenerator</span></a></span></span><a class="reference internal" href="../../_modules/defects4cpp/processor/core/command.html#DockerCommand.create_script_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.core.command.DockerCommand.create_script_generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return DockerExecInfo which has information of a command list to run inside docker container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>argv</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Command line argument vector.</p>
+<dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – argparse.Namespace instance.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>An instance of generator class which is used to create DockerCommandScript.</p>

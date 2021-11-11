@@ -308,7 +308,12 @@
     <span class="n">client</span> <span class="o">=</span> <span class="n">_Client</span><span class="p">()</span>
     <span class="sd">"""Docker SDK client."""</span>
 
-<div class="viewcode-block" id="Docker.__init__"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.docker.Docker.html#defects4cpp.processor.core.docker.Docker.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dockerfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">worktree</span><span class="p">:</span> <span class="n">Worktree</span><span class="p">):</span>
+<div class="viewcode-block" id="Docker.__init__"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.docker.Docker.html#defects4cpp.processor.core.docker.Docker.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dockerfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">worktree</span><span class="p">:</span> <span class="n">Worktree</span><span class="p">,</span>
+        <span class="n">environ</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dockerfile</span> <span class="o">=</span> <span class="n">dockerfile</span>
         <span class="c1"># Assumes that the name of its parent directory is the same with that of the target.</span>
         <span class="n">tag</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dockerfile</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
@@ -318,6 +323,7 @@
             <span class="nb">str</span><span class="p">(</span><span class="n">worktree</span><span class="o">.</span><span class="n">host</span><span class="p">):</span> <span class="p">{</span><span class="s2">"bind"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">worktree</span><span class="o">.</span><span class="n">container</span><span class="p">),</span> <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"rw"</span><span class="p">}</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_working_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">worktree</span><span class="o">.</span><span class="n">container</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_environ</span> <span class="o">=</span> <span class="n">environ</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_image</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Image</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_container</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -356,12 +362,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span>
                 <span class="n">auto_remove</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">detach</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">stdin_open</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">volumes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_volume</span><span class="p">,</span>
-                <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span>
                 <span class="n">command</span><span class="o">=</span><span class="s2">"/bin/sh"</span><span class="p">,</span>
+                <span class="n">detach</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">environment</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_environ</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span>
+                <span class="n">stdin_open</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">user</span><span class="o">=</span><span class="n">DPP_DOCKER_USER</span><span class="p">,</span>
+                <span class="n">volumes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_volume</span><span class="p">,</span>
                 <span class="n">working_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_working_dir</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>

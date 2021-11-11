@@ -28,6 +28,7 @@
       DppArgparseFileNotFoundError
       DppArgparseInvalidCaseExpressionError
       DppArgparseInvalidConfigError
+      DppArgparseInvalidEnvironment
       DppArgparseNotProjectDirectory
       DppArgparseTaxonomyNotFoundError
    

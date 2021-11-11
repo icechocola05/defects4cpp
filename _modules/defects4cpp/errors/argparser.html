@@ -228,6 +228,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">path</span></div>
 
 
+<div class="viewcode-block" id="DppArgparseInvalidEnvironment"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.argparser.DppArgparseInvalidEnvironment.html#defects4cpp.errors.argparser.DppArgparseInvalidEnvironment">[docs]</a><span class="k">class</span> <span class="nc">DppArgparseInvalidEnvironment</span><span class="p">(</span><span class="n">DppArgparseError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"invalid environment variable format '</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">' (should be KEY=VALUE)"</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
 <div class="viewcode-block" id="DppArgparseInvalidConfigError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.argparser.DppArgparseInvalidConfigError.html#defects4cpp.errors.argparser.DppArgparseInvalidConfigError">[docs]</a><span class="k">class</span> <span class="nc">DppArgparseInvalidConfigError</span><span class="p">(</span><span class="n">DppArgparseError</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>

@@ -280,10 +280,9 @@
 
 <div class="viewcode-block" id="BuildCommand"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand">[docs]</a><span class="k">class</span> <span class="nc">BuildCommand</span><span class="p">(</span><span class="n">DockerCommand</span><span class="p">):</span>
 <div class="viewcode-block" id="BuildCommand.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parser</span><span class="o">=</span><span class="n">create_common_project_parser</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># TODO: write argparse description in detail</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">create_common_project_parser</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
             <span class="s2">"-e"</span><span class="p">,</span>
             <span class="s2">"--export"</span><span class="p">,</span>
@@ -302,9 +301,9 @@
 <span class="sd">        """</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="BuildCommand.create_script_generator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.create_script_generator">[docs]</a>    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
-
+<div class="viewcode-block" id="BuildCommand.create_script_generator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.create_script_generator">[docs]</a>    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
         <span class="n">metadata</span><span class="p">,</span> <span class="n">worktree</span> <span class="o">=</span> <span class="n">read_config</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">export</span>
         <span class="n">common</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common_capture</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_path</span> <span class="k">else</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span>

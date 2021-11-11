@@ -206,6 +206,7 @@
 <span class="sd">For instance, if MyNewCommand is defined at my_command.py,</span>
 <span class="sd">MyNewCommand can be invoked from "d++ my_command" at command-line.</span>
 <span class="sd">"""</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">stat</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -466,8 +467,9 @@
 
     <span class="n">SCRIPT_NAME</span> <span class="o">=</span> <span class="s2">"DPP_COMMAND_SCRIPT"</span>
 
-<div class="viewcode-block" id="DockerCommand.__init__"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.command.DockerCommand.html#defects4cpp.processor.core.command.DockerCommand.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+<div class="viewcode-block" id="DockerCommand.__init__"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.command.DockerCommand.html#defects4cpp.processor.core.command.DockerCommand.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">parser</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -497,13 +499,18 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">script</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">line_number</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">))</span>
 
-        <span class="n">script_generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_script_generator</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environ</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">env</span>
+
+        <span class="n">script_generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_script_generator</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
         <span class="n">worktree</span> <span class="o">=</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">worktree</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">stream</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">script_generator</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">Docker</span><span class="p">(</span>
-            <span class="n">script_generator</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">dockerfile</span><span class="p">,</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">worktree</span>
+            <span class="n">script_generator</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">dockerfile</span><span class="p">,</span>
+            <span class="n">script_generator</span><span class="o">.</span><span class="n">worktree</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span>
         <span class="p">)</span> <span class="k">as</span> <span class="n">docker</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
                 <span class="n">script</span><span class="o">.</span><span class="n">before</span><span class="p">()</span>
@@ -527,14 +534,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">teardown</span><span class="p">(</span><span class="n">script_generator</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DockerCommand.create_script_generator"><a class="viewcode-back" href="../../../../api/_autosummary/defects4cpp.processor.core.command.DockerCommand.html#defects4cpp.processor.core.command.DockerCommand.create_script_generator">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Return DockerExecInfo which has information of a command list to run inside docker container.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        argv : List[str]</span>
-<span class="sd">            Command line argument vector.</span>
+<span class="sd">        args : argparse.Namespace</span>
+<span class="sd">            argparse.Namespace instance.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
