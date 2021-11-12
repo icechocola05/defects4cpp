@@ -17,25 +17,10 @@
       create_common_parser
       create_common_project_parser
       create_common_vcs_parser
-      read_config
-      write_config
    
    
 
    
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-      :toctree:
-      :template: autosummary_class.rst
-   
-      ValidateBuggy
-      ValidateEnviron
-      ValidateIndex
-      ValidateProjectPath
-      ValidateTaxonomy
-      ValidateWorkspace
    
    
 

@@ -204,7 +204,7 @@
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppArgparseFileNotFoundError</span>
 
@@ -212,14 +212,13 @@
     <span class="kn">from</span> <span class="nn">taxonomy</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">MetaData</span>
 
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
-<span class="kn">from</span> <span class="nn">processor.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">processor.core.argparser</span> <span class="kn">import</span> <span class="n">create_common_project_parser</span>
+<span class="kn">from</span> <span class="nn">processor.core.command</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DockerCommand</span><span class="p">,</span>
     <span class="n">DockerCommandScript</span><span class="p">,</span>
     <span class="n">DockerCommandScriptGenerator</span><span class="p">,</span>
-    <span class="n">Worktree</span><span class="p">,</span>
-    <span class="n">create_common_project_parser</span><span class="p">,</span>
-    <span class="n">read_config</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">processor.core.data</span> <span class="kn">import</span> <span class="n">Worktree</span>
 
 
 <div class="viewcode-block" id="ValidateExportPath"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.ValidateExportPath.html#defects4cpp.processor.build.ValidateExportPath">[docs]</a><span class="k">class</span> <span class="nc">ValidateExportPath</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
@@ -304,7 +303,9 @@
 <div class="viewcode-block" id="BuildCommand.create_script_generator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.create_script_generator">[docs]</a>    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
-        <span class="n">metadata</span><span class="p">,</span> <span class="n">worktree</span> <span class="o">=</span> <span class="n">read_config</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">metadata</span>
+        <span class="n">worktree</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">worktree</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_export_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">export</span>
         <span class="n">common</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common_capture</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_path</span> <span class="k">else</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span>
         <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
@@ -339,7 +340,7 @@
         <span class="k">if</span> <span class="n">compile_commands</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">compile_commands</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">dest</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">message</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"compile_commands.json could not be found"</span><span class="p">)</span></div>
+            <span class="n">message</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">"compile_commands.json could not be found"</span><span class="p">)</span></div>
 </pre></div>
 
           </article>

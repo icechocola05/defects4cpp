@@ -199,33 +199,25 @@
 
 <span class="sd">There should be no deep logic</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">MutableMapping</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span>
 
-<span class="kn">from</span> <span class="nn">processor.core</span> <span class="kn">import</span> <span class="n">RegisteredCommands</span>
+<span class="kn">from</span> <span class="nn">processor.core.command</span> <span class="kn">import</span> <span class="n">RegisteredCommands</span>
 
 
-<div class="viewcode-block" id="CommandList"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.command_list.CommandList.html#defects4cpp.processor.command_list.CommandList">[docs]</a><span class="k">class</span> <span class="nc">CommandList</span><span class="p">(</span><span class="n">MutableMapping</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandList"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.command_list.CommandList.html#defects4cpp.processor.command_list.CommandList">[docs]</a><span class="k">class</span> <span class="nc">CommandList</span><span class="p">(</span><span class="n">Mapping</span><span class="p">):</span>
     <span class="n">_commands</span> <span class="o">=</span> <span class="n">RegisteredCommands</span><span class="p">()</span>
 
 <div class="viewcode-block" id="CommandList.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.command_list.CommandList.html#defects4cpp.processor.command_list.CommandList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="c1"># self.update(dict(*args, **kwargs))</span>
         <span class="k">pass</span></div>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_commands</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_keytransform</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span>
 
-    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="c1"># self.store[self._keytransform(key)] = value</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"set operator is not allowed"</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="c1"># del self.store[self._keytransform(key)]</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"del operator is not allowed"</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_commands</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_commands</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_keytransform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>

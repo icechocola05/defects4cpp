@@ -1,6 +1,0 @@
-defects4cpp.lib.exe.run\_cmd
-============================
-
-.. currentmodule:: defects4cpp.lib.exe
-
-.. autofunction:: run_cmd

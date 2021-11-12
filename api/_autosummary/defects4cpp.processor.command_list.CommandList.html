@@ -205,7 +205,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">CommandList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/command_list.html#CommandList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.MutableMapping</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/defects4cpp/processor/command_list.html#CommandList.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.__init__" title="Permalink to this definition">¶</a></dt>
@@ -220,39 +220,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.__init__" title="defects4cpp.processor.command_list.CommandList.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.clear" title="defects4cpp.processor.command_list.CommandList.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.get" title="defects4cpp.processor.command_list.CommandList.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(k[,d])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.get" title="defects4cpp.processor.command_list.CommandList.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(k[,d])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.items" title="defects4cpp.processor.command_list.CommandList.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.items" title="defects4cpp.processor.command_list.CommandList.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.keys" title="defects4cpp.processor.command_list.CommandList.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.keys" title="defects4cpp.processor.command_list.CommandList.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.pop" title="defects4cpp.processor.command_list.CommandList.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>(k[,d])</p></td>
-<td><p>If key is not found, d is returned if given, otherwise KeyError is raised.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.popitem" title="defects4cpp.processor.command_list.CommandList.popitem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a>()</p></td>
-<td><p>as a 2-tuple; but raise KeyError if D is empty.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.setdefault" title="defects4cpp.processor.command_list.CommandList.setdefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a>(k[,d])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.update" title="defects4cpp.processor.command_list.CommandList.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>([E, ]**F)</p></td>
-<td><p>If E present and has a .keys() method, does:     for k in E: D[k] = E[k] If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v In either case, this is followed by: for k, v in F.items(): D[k] = v</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.values" title="defects4cpp.processor.command_list.CommandList.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#defects4cpp.processor.command_list.CommandList.values" title="defects4cpp.processor.command_list.CommandList.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py method">
-<dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None.</span>  <span class="pre">Remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">D.</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.clear" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">k</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">d</span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">D[k]</span> <span class="pre">if</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">D,</span> <span class="pre">else</span> <span class="pre">d.</span>  <span class="pre">d</span> <span class="pre">defaults</span> <span class="pre">to</span> <span class="pre">None.</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.get" title="Permalink to this definition">¶</a></dt>
@@ -265,27 +246,6 @@
 <dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.keys">
 <span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">keys</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.keys" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.pop">
-<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">k</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">d</span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">v,</span> <span class="pre">remove</span> <span class="pre">specified</span> <span class="pre">key</span> <span class="pre">and</span> <span class="pre">return</span> <span class="pre">the</span> <span class="pre">corresponding</span> <span class="pre">value.</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.pop" title="Permalink to this definition">¶</a></dt>
-<dd><p>If key is not found, d is returned if given, otherwise KeyError is raised.</p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.popitem">
-<span class="sig-name descname"><span class="pre">popitem</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">(k,</span> <span class="pre">v),</span> <span class="pre">remove</span> <span class="pre">and</span> <span class="pre">return</span> <span class="pre">some</span> <span class="pre">(key,</span> <span class="pre">value)</span> <span class="pre">pair</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.popitem" title="Permalink to this definition">¶</a></dt>
-<dd><p>as a 2-tuple; but raise KeyError if D is empty.</p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.setdefault">
-<span class="sig-name descname"><span class="pre">setdefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">k</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">d</span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">D.get(k,d),</span> <span class="pre">also</span> <span class="pre">set</span> <span class="pre">D[k]=d</span> <span class="pre">if</span> <span class="pre">k</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">D</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.setdefault" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">E</span></em>, <span class="optional">]</span><em class="sig-param"><span class="pre">**F</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None.</span>  <span class="pre">Update</span> <span class="pre">D</span> <span class="pre">from</span> <span class="pre">mapping/iterable</span> <span class="pre">E</span> <span class="pre">and</span> <span class="pre">F.</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
-If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
-In either case, this is followed by: for k, v in F.items(): D[k] = v</p>
-</dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="defects4cpp.processor.command_list.CommandList.values">
 <span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">values</span></span></span><a class="headerlink" href="#defects4cpp.processor.command_list.CommandList.values" title="Permalink to this definition">¶</a></dt>

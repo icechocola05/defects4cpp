@@ -1,6 +1,0 @@
-defects4cpp.processor.core.argparser.read\_config
-=================================================
-
-.. currentmodule:: defects4cpp.processor.core.argparser
-
-.. autofunction:: read_config

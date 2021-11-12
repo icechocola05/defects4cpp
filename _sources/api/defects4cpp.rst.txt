@@ -13,11 +13,11 @@ Subpackage
 .. toctree::
    :maxdepth: 1
 
+   defects4cpp.command
+
    defects4cpp.config
 
    defects4cpp.errors
-
-   defects4cpp.lib
 
    defects4cpp.message
 
