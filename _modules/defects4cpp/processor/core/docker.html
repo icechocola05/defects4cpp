@@ -209,6 +209,7 @@
 <span class="kn">from</span> <span class="nn">docker</span> <span class="kn">import</span> <span class="n">DockerClient</span>
 <span class="kn">from</span> <span class="nn">docker.models.containers</span> <span class="kn">import</span> <span class="n">Container</span><span class="p">,</span> <span class="n">ExecResult</span>
 <span class="kn">from</span> <span class="nn">docker.models.images</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppError</span>
 <span class="kn">from</span> <span class="nn">errors.docker</span> <span class="kn">import</span> <span class="n">DppDockerNoClientError</span>
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
 <span class="kn">from</span> <span class="nn">processor.core.data</span> <span class="kn">import</span> <span class="n">Worktree</span>
@@ -304,12 +305,18 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_image</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_volume</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="vm">__name__</span><span class="p">,</span>
             <span class="n">dedent</span><span class="p">(</span>
                 <span class="sd">"""container.__enter__ ({})</span>
-<span class="sd">                - {}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_volume</span>
+<span class="sd">                - from {}</span>
+<span class="sd">                - to {}</span>
+<span class="sd">                - mode {}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span>
+                    <span class="n">DppError</span><span class="o">.</span><span class="n">print_path</span><span class="p">(</span><span class="n">k</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_volume</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s2">"bind"</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_volume</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s2">"mode"</span><span class="p">],</span>
                 <span class="p">)</span>
             <span class="p">),</span>
         <span class="p">)</span>

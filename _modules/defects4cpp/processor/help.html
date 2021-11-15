@@ -204,8 +204,8 @@
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">import</span> <span class="nn">processor</span>
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
+<span class="kn">from</span> <span class="nn">processor.command_list</span> <span class="kn">import</span> <span class="n">CommandList</span>
 <span class="kn">from</span> <span class="nn">processor.core.argparser</span> <span class="kn">import</span> <span class="n">create_common_parser</span>
 <span class="kn">from</span> <span class="nn">processor.core.command</span> <span class="kn">import</span> <span class="n">SimpleCommand</span>
 
@@ -229,7 +229,7 @@
             <span class="s2">"Defects4C++: Defect Taxonomies for Automated Debugging Tools"</span>
         <span class="p">)</span>
         <span class="n">message</span><span class="o">.</span><span class="n">stdout_title</span><span class="p">(</span><span class="s2">"MIT Licensed, Suresoft Technologies Inc.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">commands</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">CommandList</span><span class="p">()</span>
+        <span class="n">commands</span> <span class="o">=</span> <span class="n">CommandList</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">commands</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">message</span><span class="o">.</span><span class="n">stdout_bullet</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span><span class="p">)</span>
             <span class="n">message</span><span class="o">.</span><span class="n">stdout_paragraph</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>

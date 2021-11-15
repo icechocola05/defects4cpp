@@ -5,3 +5,4 @@ defects4cpp
    :maxdepth: 4
 
    defects4cpp
+   setup
