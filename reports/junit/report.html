@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 16-Nov-2021 at 06:34:31 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 16-Nov-2021 at 07:13:06 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -265,8 +265,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.12</td></tr></table>
     <h2>Summary</h2>
-    <p>43 tests ran in 454.08 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">43 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>44 tests ran in 546.34 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">44 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -463,7 +463,7 @@ __main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[yara]</td>
-          <td class="col-duration">110.45</td>
+          <td class="col-duration">144.64</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -494,7 +494,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[cppcheck]</td>
-          <td class="col-duration">253.98</td>
+          <td class="col-duration">287.05</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -520,6 +520,31 @@ INFO     processor.core.docker:(unknown file):0 container.__enter__ (cppcheck-dp
 INFO     processor.core.docker:(unknown file):0 no image found. creating new one using cppcheck
 INFO     processor.core.docker:(unknown file):0 container.__exit__ (cppcheck-dpp-generated-container)
 INFO     processor.build:(unknown file):0 export to &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_build_command_export_comm1&#x27;
+INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/processor/test_build_command.py::test_build_command_rebuild_image</td>
+          <td class="col-duration">29.85</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.build:(unknown file):0 &#x27;test_build_command_rebuild_image&#x27;
+INFO     processor.core.docker:(unknown file):0 container.__enter__ (test_build_command_rebuild_image-dpp-generated-container)
+                - from drwxr-xr-x /home/runner/work/defects4cpp/defects4cpp/mydir/test_build_command_rebuild_ima0/test_build_command_rebuild_image/test_build_command_rebuild_image/fixed#1
+                - to /home/workspace
+                - mode rw
+INFO     processor.core.docker:(unknown file):0 no image found. creating new one using test_build_command_rebuild_image
+INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_build_command_rebuild_image-dpp-generated-container)
+INFO     processor.build:(unknown file):0 done
+INFO     processor.build:(unknown file):0 &#x27;test_build_command_rebuild_image&#x27;
+INFO     processor.core.docker:(unknown file):0 container.__enter__ (test_build_command_rebuild_image-dpp-generated-container)
+                - from drwxr-xr-x /home/runner/work/defects4cpp/defects4cpp/mydir/test_build_command_rebuild_ima0/test_build_command_rebuild_image/test_build_command_rebuild_image/fixed#1
+                - to /home/workspace
+                - mode rw
+INFO     processor.core.docker:(unknown file):0 removing the previous image test_build_command_rebuild_image/dppgen
+INFO     processor.core.docker:(unknown file):0 no image found. creating new one using test_build_command_rebuild_image
+INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_build_command_rebuild_image-dpp-generated-container)
 INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
@@ -561,7 +586,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_clone_error</td>
-          <td class="col-duration">0.00</td>
+          <td class="col-duration">0.01</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -582,7 +607,7 @@ ERROR    processor.checkout:(unknown file):0 git-clone failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_worktree_error</td>
-          <td class="col-duration">1.22</td>
+          <td class="col-duration">0.57</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -603,7 +628,7 @@ ERROR    processor.checkout:(unknown file):0 git-worktree failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_checkout_error</td>
-          <td class="col-duration">0.68</td>
+          <td class="col-duration">0.46</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -623,7 +648,7 @@ ERROR    processor.checkout:(unknown file):0 git-checkout failed (not a git repo
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_submodule_init_error</td>
-          <td class="col-duration">2.79</td>
+          <td class="col-duration">2.39</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -655,7 +680,7 @@ fatal: Fetched in submodule path &#x27;defects4cpp&#x27;, but it did not contain
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_apply_patch_error_patch_could_not_be_applied</td>
-          <td class="col-duration">0.63</td>
+          <td class="col-duration">0.49</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -698,7 +723,7 @@ hint: Use &#x27;git am --show-current-patch=diff&#x27; to see the failed patch&#
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_container</td>
-          <td class="col-duration">10.71</td>
+          <td class="col-duration">10.70</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -714,7 +739,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_mount_directory</td>
-          <td class="col-duration">21.37</td>
+          <td class="col-duration">21.46</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -774,7 +799,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_check_result</td>
-          <td class="col-duration">0.00</td>
+          <td class="col-duration">0.01</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -792,7 +817,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command</td>
-          <td class="col-duration">25.24</td>
+          <td class="col-duration">21.72</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -817,7 +842,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command_as_script</td>
-          <td class="col-duration">21.47</td>
+          <td class="col-duration">21.64</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -842,7 +867,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_fixed</td>
-          <td class="col-duration">2.59</td>
+          <td class="col-duration">2.67</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -866,7 +891,7 @@ INFO     processor.checkout:(unknown file):0 creating &#x27;.defects4cpp.json&#x
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_buggy</td>
-          <td class="col-duration">2.66</td>
+          <td class="col-duration">2.32</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

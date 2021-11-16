@@ -502,6 +502,7 @@
 
         <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">environ</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">rebuild_image</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">rebuild_image</span> <span class="k">else</span> <span class="kc">False</span>
 
         <span class="n">script_generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_script_generator</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
         <span class="n">worktree</span> <span class="o">=</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">worktree</span>
@@ -512,6 +513,7 @@
             <span class="n">script_generator</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">dockerfile</span><span class="p">,</span>
             <span class="n">script_generator</span><span class="o">.</span><span class="n">worktree</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span>
+            <span class="n">rebuild_image</span><span class="p">,</span>
         <span class="p">)</span> <span class="k">as</span> <span class="n">docker</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="n">script_generator</span><span class="o">.</span><span class="n">create</span><span class="p">():</span>
                 <span class="n">script</span><span class="o">.</span><span class="n">before</span><span class="p">()</span>

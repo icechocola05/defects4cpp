@@ -201,6 +201,36 @@
     <span class="k">pass</span></div>
 
 
+<div class="viewcode-block" id="DppDockerBuildError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.docker.DppDockerBuildError.html#defects4cpp.errors.docker.DppDockerBuildError">[docs]</a><span class="k">class</span> <span class="nc">DppDockerBuildError</span><span class="p">(</span><span class="n">DppError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+            <span class="s2">"Could not build image. Please open an issue at "</span>
+            <span class="s2">"https://github.com/Suresoft-GLaDOS/defects4cpp/issues</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DppDockerBuildClientError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.docker.DppDockerBuildClientError.html#defects4cpp.errors.docker.DppDockerBuildClientError">[docs]</a><span class="k">class</span> <span class="nc">DppDockerBuildClientError</span><span class="p">(</span><span class="n">DppError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+            <span class="s2">"Could not build image (client error). Please open an issue at "</span>
+            <span class="s2">"https://github.com/Suresoft-GLaDOS/defects4cpp/issues</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DppDockerBuildServerError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.docker.DppDockerBuildServerError.html#defects4cpp.errors.docker.DppDockerBuildServerError">[docs]</a><span class="k">class</span> <span class="nc">DppDockerBuildServerError</span><span class="p">(</span><span class="n">DppError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+            <span class="s2">"Could not build image (server error). Please open an issue at "</span>
+            <span class="s2">"https://github.com/Suresoft-GLaDOS/defects4cpp/issues</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="DppDockerNoClientError"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.errors.docker.DppDockerNoClientError.html#defects4cpp.errors.docker.DppDockerNoClientError">[docs]</a><span class="k">class</span> <span class="nc">DppDockerNoClientError</span><span class="p">(</span><span class="n">DppDockerError</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>

@@ -22,8 +22,8 @@
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
-            25 statements &nbsp;
-            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">25 run</button>
+            26 statements &nbsp;
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">26 run</button>
             <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">0 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
         </h2>
@@ -169,20 +169,26 @@
     <p id="t115" class="pln"><span class="n"><a href="#t115">115</a></span><span class="t">        <span class="nam">action</span><span class="op">=</span><span class="str">"store_true"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p id="t116" class="pln"><span class="n"><a href="#t116">116</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t117" class="run"><span class="n"><a href="#t117">117</a></span><span class="t">    <span class="nam">parser</span><span class="op">.</span><span class="nam">add_argument</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t118" class="pln"><span class="n"><a href="#t118">118</a></span><span class="t">        <span class="str">"--env"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t119" class="pln"><span class="n"><a href="#t119">119</a></span><span class="t">        <span class="nam">type</span><span class="op">=</span><span class="nam">str</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t120" class="pln"><span class="n"><a href="#t120">120</a></span><span class="t">        <span class="nam">dest</span><span class="op">=</span><span class="str">"env"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t121" class="pln"><span class="n"><a href="#t121">121</a></span><span class="t">        <span class="nam">nargs</span><span class="op">=</span><span class="num">1</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t122" class="pln"><span class="n"><a href="#t122">122</a></span><span class="t">        <span class="nam">help</span><span class="op">=</span><span class="str">"set 'key=value' environment variables within container. (can be used multiple times)"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t123" class="pln"><span class="n"><a href="#t123">123</a></span><span class="t">        <span class="nam">action</span><span class="op">=</span><span class="nam">ValidateEnviron</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t124" class="pln"><span class="n"><a href="#t124">124</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t125" class="run"><span class="n"><a href="#t125">125</a></span><span class="t">    <span class="key">return</span> <span class="nam">parser</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t118" class="pln"><span class="n"><a href="#t118">118</a></span><span class="t">        <span class="str">"--rebuild-image"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t119" class="pln"><span class="n"><a href="#t119">119</a></span><span class="t">        <span class="nam">dest</span><span class="op">=</span><span class="str">"rebuild_image"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t120" class="pln"><span class="n"><a href="#t120">120</a></span><span class="t">        <span class="nam">help</span><span class="op">=</span><span class="str">"rebuild docker image."</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t121" class="pln"><span class="n"><a href="#t121">121</a></span><span class="t">        <span class="nam">action</span><span class="op">=</span><span class="str">"store_true"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t122" class="pln"><span class="n"><a href="#t122">122</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t123" class="run"><span class="n"><a href="#t123">123</a></span><span class="t">    <span class="nam">parser</span><span class="op">.</span><span class="nam">add_argument</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t124" class="pln"><span class="n"><a href="#t124">124</a></span><span class="t">        <span class="str">"--env"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t125" class="pln"><span class="n"><a href="#t125">125</a></span><span class="t">        <span class="nam">type</span><span class="op">=</span><span class="nam">str</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t126" class="pln"><span class="n"><a href="#t126">126</a></span><span class="t">        <span class="nam">dest</span><span class="op">=</span><span class="str">"env"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t127" class="pln"><span class="n"><a href="#t127">127</a></span><span class="t">        <span class="nam">nargs</span><span class="op">=</span><span class="num">1</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t128" class="pln"><span class="n"><a href="#t128">128</a></span><span class="t">        <span class="nam">help</span><span class="op">=</span><span class="str">"set 'key=value' environment variables within container. (can be used multiple times)"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t129" class="pln"><span class="n"><a href="#t129">129</a></span><span class="t">        <span class="nam">action</span><span class="op">=</span><span class="nam">ValidateEnviron</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t130" class="pln"><span class="n"><a href="#t130">130</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t131" class="run"><span class="n"><a href="#t131">131</a></span><span class="t">    <span class="key">return</span> <span class="nam">parser</span>&nbsp;</span><span class="r"></span></p>
 </div>
 <div id="footer">
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
-            created at 2021-11-16 06:39 +0000
+            created at 2021-11-16 07:19 +0000
         </p>
     </div>
 </div>

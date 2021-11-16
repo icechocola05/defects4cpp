@@ -311,6 +311,12 @@
         <span class="n">action</span><span class="o">=</span><span class="s2">"store_true"</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">"--rebuild-image"</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s2">"rebuild_image"</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">"rebuild docker image."</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s2">"store_true"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">"--env"</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
         <span class="n">dest</span><span class="o">=</span><span class="s2">"env"</span><span class="p">,</span>

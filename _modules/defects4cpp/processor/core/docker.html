@@ -199,6 +199,7 @@
 
 <span class="sd">Do not use docker SDK directly, instead use Docker class.</span>
 <span class="sd">"""</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">cast</span>
@@ -210,7 +211,12 @@
 <span class="kn">from</span> <span class="nn">docker.models.containers</span> <span class="kn">import</span> <span class="n">Container</span><span class="p">,</span> <span class="n">ExecResult</span>
 <span class="kn">from</span> <span class="nn">docker.models.images</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppError</span>
-<span class="kn">from</span> <span class="nn">errors.docker</span> <span class="kn">import</span> <span class="n">DppDockerNoClientError</span>
+<span class="kn">from</span> <span class="nn">errors.docker</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DppDockerBuildClientError</span><span class="p">,</span>
+    <span class="n">DppDockerBuildError</span><span class="p">,</span>
+    <span class="n">DppDockerBuildServerError</span><span class="p">,</span>
+    <span class="n">DppDockerNoClientError</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
 <span class="kn">from</span> <span class="nn">processor.core.data</span> <span class="kn">import</span> <span class="n">Worktree</span>
 
@@ -229,11 +235,27 @@
     <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Container</span><span class="p">,</span> <span class="n">container</span><span class="p">)</span>
 
 
+<span class="k">def</span> <span class="nf">_try_build_image</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">rm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="n">docker</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">BuildError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">DppDockerBuildError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">docker</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">APIError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">is_client_error</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">DppDockerBuildClientError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">explanation</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DppDockerBuildServerError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">explanation</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">_build_image</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
     <span class="sd">"""</span>
 <span class="sd">    Helper function to get a correct type</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">rm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_try_build_image</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">DppError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">stdout_progress_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">_Client</span><span class="p">:</span>
@@ -270,6 +292,7 @@
         <span class="n">dockerfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">worktree</span><span class="p">:</span> <span class="n">Worktree</span><span class="p">,</span>
         <span class="n">environ</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">rebuild_image</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dockerfile</span> <span class="o">=</span> <span class="n">dockerfile</span>
         <span class="c1"># Assumes that the name of its parent directory is the same with that of the target.</span>
@@ -281,6 +304,7 @@
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_working_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">worktree</span><span class="o">.</span><span class="n">container</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_environ</span> <span class="o">=</span> <span class="n">environ</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rebuild_image</span> <span class="o">=</span> <span class="n">rebuild_image</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_image</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Image</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_container</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Container</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -289,6 +313,11 @@
         <span class="sd">"""Docker SDK Image."""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_image</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rebuild_image</span><span class="p">:</span>
+                    <span class="c1"># It should raise ImageNotFound later and make image rebuilt.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">)</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"removing the previous image </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
                 <span class="bp">self</span><span class="o">.</span><span class="n">_image</span> <span class="o">=</span> <span class="n">_cast_image</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">))</span>
                 <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"image found </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">docker</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">ImageNotFound</span><span class="p">:</span>
@@ -300,8 +329,6 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_image</span> <span class="o">=</span> <span class="n">_build_image</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dockerfile</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
                 <span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">pass</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_image</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
