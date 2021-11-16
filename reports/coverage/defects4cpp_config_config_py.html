@@ -86,7 +86,7 @@
     <p id="t32" class="pln"><span class="n"><a href="#t32">32</a></span><span class="t">                <span class="key">for</span> <span class="nam">key</span> <span class="key">in</span> <span class="nam">dir</span><span class="op">(</span><span class="nam">env_module</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t33" class="pln"><span class="n"><a href="#t33">33</a></span><span class="t">                <span class="key">if</span> <span class="nam">key</span><span class="op">.</span><span class="nam">startswith</span><span class="op">(</span><span class="str">"DPP"</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t34" class="pln"><span class="n"><a href="#t34">34</a></span><span class="t">            <span class="op">}</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t35" class="run"><span class="n"><a href="#t35">35</a></span><span class="t">            <span class="key">for</span> <span class="nam">k</span> <span class="key">in</span> <span class="nam">settings</span><span class="op">.</span><span class="nam">keys</span><span class="op">(</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t35" class="run"><span class="n"><a href="#t35">35</a></span><span class="t">            <span class="key">for</span> <span class="nam">k</span> <span class="key">in</span> <span class="nam">settings</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p id="t36" class="run"><span class="n"><a href="#t36">36</a></span><span class="t">                <span class="nam">prop</span> <span class="op">=</span> <span class="nam">property</span><span class="op">(</span><span class="nam">create_getter</span><span class="op">(</span><span class="nam">k</span><span class="op">)</span><span class="op">,</span> <span class="nam">create_setter</span><span class="op">(</span><span class="nam">k</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t37" class="run"><span class="n"><a href="#t37">37</a></span><span class="t">                <span class="nam">setattr</span><span class="op">(</span><span class="nam">new_class</span><span class="op">,</span> <span class="nam">k</span><span class="op">,</span> <span class="nam">prop</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t38" class="run"><span class="n"><a href="#t38">38</a></span><span class="t">        <span class="key">return</span> <span class="nam">new_class</span>&nbsp;</span><span class="r"></span></p>
@@ -102,7 +102,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
-            created at 2021-11-15 08:02 +0000
+            created at 2021-11-16 02:58 +0000
         </p>
     </div>
 </div>
