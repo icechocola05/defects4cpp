@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 16-Nov-2021 at 07:45:55 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 19-Nov-2021 at 08:05:51 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,7 +257,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>{"pluggy": "1.0.0", "py": "1.11.0", "pytest": "6.2.5"}</td></tr>
       <tr>
         <td>Platform</td>
-        <td>Linux-5.11.0-1020-azure-x86_64-with-glibc2.2.5</td></tr>
+        <td>Linux-5.11.0-1021-azure-x86_64-with-glibc2.2.5</td></tr>
       <tr>
         <td>Plugins</td>
         <td>{"cov": "2.12.1", "html": "3.1.1", "metadata": "1.11.0", "sugar": "0.9.4"}</td></tr>
@@ -265,7 +265,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.12</td></tr></table>
     <h2>Summary</h2>
-    <p>44 tests ran in 455.54 seconds. </p>
+    <p>44 tests ran in 425.04 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">44 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -463,7 +463,7 @@ __main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[yara]</td>
-          <td class="col-duration">103.20</td>
+          <td class="col-duration">81.39</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -487,6 +487,7 @@ INFO     processor.core.docker:(unknown file):0 container.__enter__ (yara-dpp-ge
                 - to /home/workspace
                 - mode rw
 INFO     processor.core.docker:(unknown file):0 no image found. creating new one using yara
+WARNING  processor.build:(unknown file):0 build command exit with 2
 INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-generated-container)
 INFO     processor.build:(unknown file):0 export to &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_build_command_export_comm0&#x27;
 INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
@@ -494,7 +495,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[cppcheck]</td>
-          <td class="col-duration">238.00</td>
+          <td class="col-duration">230.80</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -525,7 +526,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_rebuild_image</td>
-          <td class="col-duration">30.10</td>
+          <td class="col-duration">28.35</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -595,11 +596,11 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
 [test_git_clone_error] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;test_git_clone_error&#x27;
 INFO     processor.checkout:(unknown file):0 cloning test_git_clone_error into /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo
-DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;test-url&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
-DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;test-url&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo&#x27;])&#x27;s unused stdout: 
+DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;test-url&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
+DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;test-url&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo&#x27;])&#x27;s unused stdout: 
 DEBUG    git.cmd:(unknown file):0 AutoInterrupt wait stderr: b&quot;fatal: repository &#x27;test-url&#x27; does not exist\n&quot;
 ERROR    processor.checkout:(unknown file):0 git-clone failed.
-                Command: git clone -v test-url /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo
+                Command: git clone -v -c core.autocrlf=false test-url /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo
                 Status: 128
                 Path: (nonexistent) /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_clone_error0/test_git_clone_error/test_git_clone_error/.repo
                 Metadata: test_git_clone_error<br/></div></td></tr></tbody>
@@ -607,7 +608,7 @@ ERROR    processor.checkout:(unknown file):0 git-clone failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_worktree_error</td>
-          <td class="col-duration">0.56</td>
+          <td class="col-duration">0.54</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -617,8 +618,8 @@ ERROR    processor.checkout:(unknown file):0 git-clone failed.
 [test_git_worktree_error] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;test_git_worktree_error&#x27;
 INFO     processor.checkout:(unknown file):0 cloning test_git_worktree_error into /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo
-DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
-DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo&#x27;])&#x27;s unused stdout: 
+DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
+DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo&#x27;])&#x27;s unused stdout: 
 INFO     processor.checkout:(unknown file):0 git-checkout
 DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;worktree&#x27;, &#x27;add&#x27;, &#x27;-f&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/fixed#1&#x27;, &#x27;1&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_worktree_error0/test_git_worktree_error/test_git_worktree_error/.repo, universal_newlines=False, shell=None, istream=None)
 ERROR    processor.checkout:(unknown file):0 git-worktree failed.
@@ -628,7 +629,7 @@ ERROR    processor.checkout:(unknown file):0 git-worktree failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_checkout_error</td>
-          <td class="col-duration">0.50</td>
+          <td class="col-duration">0.49</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -638,8 +639,8 @@ ERROR    processor.checkout:(unknown file):0 git-worktree failed.
 [test_git_checkout_error] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;test_git_checkout_error&#x27;
 INFO     processor.checkout:(unknown file):0 cloning test_git_checkout_error into /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/.repo
-DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
-DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/.repo&#x27;])&#x27;s unused stdout: 
+DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
+DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/.repo&#x27;])&#x27;s unused stdout: 
 INFO     processor.checkout:(unknown file):0 git-checkout
 ERROR    processor.checkout:(unknown file):0 git-checkout failed (not a git repository).
                 Path: drwxr-xr-x /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_checkout_error0/test_git_checkout_error/test_git_checkout_error/fixed#1
@@ -648,7 +649,7 @@ ERROR    processor.checkout:(unknown file):0 git-checkout failed (not a git repo
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_submodule_init_error</td>
-          <td class="col-duration">2.67</td>
+          <td class="col-duration">2.68</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -658,8 +659,8 @@ ERROR    processor.checkout:(unknown file):0 git-checkout failed (not a git repo
 [test_git_submodule_init_error] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;test_git_submodule_init_error&#x27;
 INFO     processor.checkout:(unknown file):0 cloning test_git_submodule_init_error into /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo
-DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
-DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo&#x27;])&#x27;s unused stdout: 
+DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
+DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo&#x27;])&#x27;s unused stdout: 
 INFO     processor.checkout:(unknown file):0 git-checkout
 DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;worktree&#x27;, &#x27;add&#x27;, &#x27;-f&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/fixed#1&#x27;, &#x27;0a158cb95d7ed8e64552ef80df6e6204205d4fa5&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo, universal_newlines=False, shell=None, istream=None)
 DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;worktree&#x27;, &#x27;list&#x27;, &#x27;--porcelain&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_submodule_init_error0/test_git_submodule_init_error/test_git_submodule_init_error/.repo, universal_newlines=False, shell=None, istream=None)
@@ -680,7 +681,7 @@ fatal: Fetched in submodule path &#x27;defects4cpp&#x27;, but it did not contain
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_apply_patch_error_patch_could_not_be_applied</td>
-          <td class="col-duration">0.55</td>
+          <td class="col-duration">0.53</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -690,8 +691,8 @@ fatal: Fetched in submodule path &#x27;defects4cpp&#x27;, but it did not contain
 [test_git_apply_patch_error_patch_could_not_be_applied] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;test_git_apply_patch_error_patch_could_not_be_applied&#x27;
 INFO     processor.checkout:(unknown file):0 cloning test_git_apply_patch_error_patch_could_not_be_applied into /home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo
-DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
-DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo&#x27;])&#x27;s unused stdout: 
+DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp, universal_newlines=True, shell=None, istream=None)
+DEBUG    git.repo.base:(unknown file):0 Cmd([&#x27;git&#x27;, &#x27;clone&#x27;, &#x27;-v&#x27;, &#x27;-c&#x27;, &#x27;core.autocrlf=false&#x27;, &#x27;https://github.com/Suresoft-GLaDOS/defects4cpp-test&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo&#x27;])&#x27;s unused stdout: 
 INFO     processor.checkout:(unknown file):0 git-checkout
 DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;worktree&#x27;, &#x27;add&#x27;, &#x27;-f&#x27;, &#x27;/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/fixed#1&#x27;, &#x27;0935324da04784d625c5faef0705adf8705fab9c&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo, universal_newlines=False, shell=None, istream=None)
 DEBUG    git.cmd:(unknown file):0 Popen([&#x27;git&#x27;, &#x27;worktree&#x27;, &#x27;list&#x27;, &#x27;--porcelain&#x27;], cwd=/home/runner/work/defects4cpp/defects4cpp/mydir/test_git_apply_patch_error_pat0/test_git_apply_patch_error_patch_could_not_be_applied/test_git_apply_patch_error_patch_could_not_be_applied/.repo, universal_newlines=False, shell=None, istream=None)
@@ -723,7 +724,7 @@ hint: Use &#x27;git am --show-current-patch=diff&#x27; to see the failed patch&#
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_container</td>
-          <td class="col-duration">10.63</td>
+          <td class="col-duration">10.57</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -739,7 +740,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_mount_directory</td>
-          <td class="col-duration">21.32</td>
+          <td class="col-duration">21.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -817,7 +818,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command</td>
-          <td class="col-duration">21.47</td>
+          <td class="col-duration">21.34</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -842,7 +843,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command_as_script</td>
-          <td class="col-duration">21.34</td>
+          <td class="col-duration">21.32</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -867,7 +868,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_fixed</td>
-          <td class="col-duration">2.45</td>
+          <td class="col-duration">2.76</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -891,7 +892,7 @@ INFO     processor.checkout:(unknown file):0 creating &#x27;.defects4cpp.json&#x
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_buggy</td>
-          <td class="col-duration">2.43</td>
+          <td class="col-duration">2.79</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
