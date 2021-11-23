@@ -25,6 +25,8 @@
       DppCaseExpressionInternalError
       DppCommandListInternalError
       DppInternalError
+      DppMetaDataInitKeyError
+      DppMetaDataInitTypeError
       DppTaxonomyInitInternalError
    
    

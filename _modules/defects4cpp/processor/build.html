@@ -204,7 +204,7 @@
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppArgparseFileNotFoundError</span>
 
@@ -265,7 +265,7 @@
 <div class="viewcode-block" id="BuildCommandScriptGenerator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScriptGenerator.html#defects4cpp.processor.build.BuildCommandScriptGenerator">[docs]</a><span class="k">class</span> <span class="nc">BuildCommandScriptGenerator</span><span class="p">(</span><span class="n">DockerCommandScriptGenerator</span><span class="p">):</span>
 <div class="viewcode-block" id="BuildCommandScriptGenerator.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScriptGenerator.html#defects4cpp.processor.build.BuildCommandScriptGenerator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">command</span><span class="p">:</span> <span class="s2">"Command"</span><span class="p">,</span>
+        <span class="n">command</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">"Command"</span><span class="p">],</span>
         <span class="n">metadata</span><span class="p">:</span> <span class="s2">"MetaData"</span><span class="p">,</span>
         <span class="n">worktree</span><span class="p">:</span> <span class="n">Worktree</span><span class="p">,</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -274,7 +274,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span></div>
 
 <div class="viewcode-block" id="BuildCommandScriptGenerator.create"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommandScriptGenerator.html#defects4cpp.processor.build.BuildCommandScriptGenerator.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">BuildCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="k">yield</span> <span class="n">BuildCommandScript</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">BuildCommandScript</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span> <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="BuildCommand"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand">[docs]</a><span class="k">class</span> <span class="nc">BuildCommand</span><span class="p">(</span><span class="n">DockerCommand</span><span class="p">):</span>
