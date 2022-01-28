@@ -9,27 +9,27 @@ A List of Defect Taxonomy
 
    * - Project
      - # of bugs
-   * - cppcheck
-     - 30
    * - openssl
      - 31
-   * - libucl
-     - 7
-   * - xbps
-     - 5
    * - zsh
      - 5
-   * - proj
-     - 28
+   * - yara
+     - 6
    * - libsndfile
      - 4
    * - libchewing
      - 8
-   * - libssh
-     - 1
-   * - yara
-     - 6
-   * - wireshark
-     - 6
+   * - proj
+     - 28
+   * - cppcheck
+     - 30
+   * - xbps
+     - 5
+   * - libucl
+     - 7
    * - wget2
      - 3
+   * - libssh
+     - 1
+   * - wireshark
+     - 6
