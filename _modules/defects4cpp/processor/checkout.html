@@ -201,6 +201,7 @@
 <span class="sd">"""</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
 
@@ -350,6 +351,7 @@
 <span class="sd">        """</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">metadata</span>
+        <span class="n">metadata_base</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">metadata_base</span>
         <span class="n">worktree</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">worktree</span>
         <span class="c1"># args.index is 1 based.</span>
         <span class="n">defect</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">defects</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
@@ -371,13 +373,20 @@
                 <span class="n">_git_am</span><span class="p">(</span>
                     <span class="n">checkout_repo</span><span class="p">,</span>
                     <span class="p">[</span>
-                        <span class="n">defect</span><span class="o">.</span><span class="n">buggy_patch</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">buggy</span> <span class="k">else</span> <span class="s2">""</span><span class="p">,</span>
-                        <span class="n">defect</span><span class="o">.</span><span class="n">fix_patch</span><span class="p">,</span>
+                        <span class="n">defect</span><span class="o">.</span><span class="n">buggy_patch</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">buggy</span> <span class="k">else</span> <span class="n">defect</span><span class="o">.</span><span class="n">fixed_patch</span><span class="p">,</span>
+                        <span class="n">defect</span><span class="o">.</span><span class="n">common_patch</span><span class="p">,</span>
                         <span class="n">defect</span><span class="o">.</span><span class="n">split_patch</span><span class="p">,</span>
                     <span class="p">],</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">"git-am skipped"</span><span class="p">)</span>
+
+            <span class="c1"># check if there are extra data</span>
+            <span class="n">path_to_extra</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">metadata_base</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"extra"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">index</span><span class="si">:</span><span class="s2">04</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path_to_extra</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"copying extra directory(f</span><span class="si">{</span><span class="n">path_to_extra</span><span class="si">}</span><span class="s2">) to project root"</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">extra</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">(</span><span class="n">path_to_extra</span><span class="p">):</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">extra</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">worktree</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">extra</span><span class="o">.</span><span class="n">stem</span><span class="p">),</span> <span class="n">dirs_exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="n">message</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"creating '.defects4cpp.json' at </span><span class="si">{</span><span class="n">worktree</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="c1"># Write .defects4cpp.json in the directory.</span>
