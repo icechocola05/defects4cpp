@@ -12,7 +12,7 @@ A List of Defect Taxonomy
    * - proj
      - 28
    * - libtiff
-     - 2
+     - 5
    * - cppcheck
      - 30
    * - libchewing
@@ -23,6 +23,8 @@ A List of Defect Taxonomy
      - 7
    * - xbps
      - 5
+   * - coreutils
+     - 2
    * - wireshark
      - 6
    * - libsndfile
