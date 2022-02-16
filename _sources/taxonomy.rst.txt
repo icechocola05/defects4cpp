@@ -33,6 +33,8 @@ A List of Defect Taxonomy
      - 1
    * - wget2
      - 3
+   * - libxml2
+     - 1
    * - zsh
      - 5
    * - openssl
