@@ -26,7 +26,9 @@
       ManagedAttribute
       ObservableAttribute
       ObservableAttributeMeta
+      RunGcovrTestCommandScript
       SetupTestCommandScript
+      TeardownTestCommandScript
       TestCommand
       TestCommandScript
       TestCommandScriptGenerator

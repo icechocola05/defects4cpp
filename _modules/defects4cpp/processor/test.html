@@ -404,6 +404,29 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">command_type</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span></div></div>
 
 
+<div class="viewcode-block" id="TeardownTestCommandScript"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TeardownTestCommandScript.html#defects4cpp.processor.test.TeardownTestCommandScript">[docs]</a><span class="k">class</span> <span class="nc">TeardownTestCommandScript</span><span class="p">(</span><span class="n">TestCommandScript</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Script to execute after running CoverageTestCommandScript.</span>
+
+<span class="sd">    Clear the coverage data by remove gcov directory and its contents.</span>
+<span class="sd">    related to: https://github.com/Suresoft-GLaDOS/defects4cpp/issues/66</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="TeardownTestCommandScript.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TeardownTestCommandScript.html#defects4cpp.processor.test.TeardownTestCommandScript.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">case</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">case</span><span class="p">,</span>
+            <span class="n">CommandType</span><span class="o">.</span><span class="n">Docker</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">"sh -c 'rm -rf gcov'"</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="TeardownTestCommandScript.before"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TeardownTestCommandScript.html#defects4cpp.processor.test.TeardownTestCommandScript.before">[docs]</a>    <span class="k">def</span> <span class="nf">before</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Override TestCommandScript.before method to prevent echoing.</span>
+        <span class="k">pass</span></div></div>
+
+
 <div class="viewcode-block" id="GcovCommandScript"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.GcovCommandScript.html#defects4cpp.processor.test.GcovCommandScript">[docs]</a><span class="k">class</span> <span class="nc">GcovCommandScript</span><span class="p">(</span><span class="n">DockerCommandScript</span><span class="p">,</span> <span class="n">CapturedOutputAttributeMixin</span><span class="p">):</span>
     <span class="sd">"""</span>
 <span class="sd">    Script to execute gcov.</span>
@@ -412,16 +435,9 @@
 <div class="viewcode-block" id="GcovCommandScript.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.GcovCommandScript.html#defects4cpp.processor.test.GcovCommandScript.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">case</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">exclude</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
         <span class="n">command_type</span><span class="p">:</span> <span class="n">CommandType</span><span class="p">,</span>
         <span class="n">command</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">):</span>
-        <span class="n">exclude_flags</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="sa">f</span><span class="s2">"--gcov-exclude </span><span class="si">{</span><span class="n">excluded_gcov</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">excluded_gcov</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"gcovr </span><span class="si">{</span><span class="n">exclude_flags</span><span class="si">}</span><span class="s2"> --keep --use-gcov-files --json --output gcov/summary.json gcov"</span>
-        <span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">command_type</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_case</span> <span class="o">=</span> <span class="n">case</span></div>
 
@@ -441,6 +457,32 @@
 
 <div class="viewcode-block" id="GcovCommandScript.after"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.GcovCommandScript.html#defects4cpp.processor.test.GcovCommandScript.after">[docs]</a>    <span class="k">def</span> <span class="nf">after</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div></div>
+
+
+<div class="viewcode-block" id="RunGcovrTestCommandScript"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.RunGcovrTestCommandScript.html#defects4cpp.processor.test.RunGcovrTestCommandScript">[docs]</a><span class="k">class</span> <span class="nc">RunGcovrTestCommandScript</span><span class="p">(</span><span class="n">TestCommandScript</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Script to execute gcovr to make summary.json.</span>
+
+<span class="sd">    Clear the coverage data by remove gcov directory and its contents.</span>
+<span class="sd">    related to: https://github.com/Suresoft-GLaDOS/defects4cpp/issues/66</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="RunGcovrTestCommandScript.before"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.RunGcovrTestCommandScript.html#defects4cpp.processor.test.RunGcovrTestCommandScript.before">[docs]</a>    <span class="k">def</span> <span class="nf">before</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="RunGcovrTestCommandScript.__init__"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.RunGcovrTestCommandScript.html#defects4cpp.processor.test.RunGcovrTestCommandScript.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">case</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">exclude</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="n">exclude_flags</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s2">"--gcov-exclude </span><span class="si">{</span><span class="n">excluded_gcov</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">excluded_gcov</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">case</span><span class="p">,</span>
+            <span class="n">CommandType</span><span class="o">.</span><span class="n">Docker</span><span class="p">,</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s2">"gcovr </span><span class="si">{</span><span class="n">exclude_flags</span><span class="si">}</span><span class="s2"> --keep --use-gcov-files --json --output gcov/summary.json gcov"</span><span class="p">]</span>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TestCommandScriptGenerator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TestCommandScriptGenerator.html#defects4cpp.processor.test.TestCommandScriptGenerator">[docs]</a><span class="k">class</span> <span class="nc">TestCommandScriptGenerator</span><span class="p">(</span><span class="n">DockerCommandScriptGenerator</span><span class="p">):</span>
@@ -506,15 +548,19 @@
                 <span class="k">yield</span> <span class="n">CoverageTestCommandScript</span><span class="p">(</span>
                     <span class="n">case</span><span class="p">,</span>
                     <span class="n">test_cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
-                    <span class="n">test_cmd</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span>
+                    <span class="n">test_cmd</span><span class="o">.</span><span class="n">lines</span>
                 <span class="p">)</span>
             <span class="k">for</span> <span class="n">gcov_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">GcovCommandScript</span><span class="p">(</span>
                     <span class="n">case</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span><span class="o">.</span><span class="n">exclude</span><span class="p">,</span>
                     <span class="n">gcov_cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
-                    <span class="n">gcov_cmd</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span>
-                <span class="p">)</span></div>
+                    <span class="n">gcov_cmd</span><span class="o">.</span><span class="n">lines</span>
+                <span class="p">)</span>
+                <span class="k">yield</span> <span class="n">RunGcovrTestCommandScript</span><span class="p">(</span>
+                    <span class="n">case</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span><span class="o">.</span><span class="n">exclude</span>
+                <span class="p">)</span>
+            <span class="k">yield</span> <span class="n">TeardownTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TestCommand"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TestCommand.html#defects4cpp.processor.test.TestCommand">[docs]</a><span class="k">class</span> <span class="nc">TestCommand</span><span class="p">(</span><span class="n">DockerCommand</span><span class="p">):</span>
@@ -710,7 +756,8 @@
                 <span class="c1"># Full path should be passed to overwrite if already exists.</span>
                 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">coverage</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+                <span class="c1"># Do not rmdir (TeardownTestCommandScript will do)</span>
+                <span class="c1"># related to https://github.com/Suresoft-GLaDOS/defects4cpp/issues/66</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">coverage_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">coverage</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">failed_coverage_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">coverage</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
