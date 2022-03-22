@@ -202,7 +202,7 @@
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span><span class="p">,</span> <span class="n">system</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
@@ -704,7 +704,7 @@
             <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">script</span><span class="p">)</span> <span class="ow">is</span> <span class="n">CoverageTestCommandScript</span>
         <span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_save_result</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">script</span><span class="p">)</span> <span class="ow">is</span> <span class="n">GcovCommandScript</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">script</span><span class="p">)</span> <span class="ow">is</span> <span class="n">RunGcovrTestCommandScript</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_save_coverage</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">GcovCommandScript</span><span class="p">,</span> <span class="n">script</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span></div>
@@ -758,7 +758,12 @@
         <span class="k">if</span> <span class="n">coverage</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">coverage</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*"</span><span class="p">):</span>
                 <span class="c1"># Full path should be passed to overwrite if already exists.</span>
-                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PermissionError: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sudo mv </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">coverage_dest</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># Do not rmdir (TeardownTestCommandScript will do)</span>
                 <span class="c1"># related to https://github.com/Suresoft-GLaDOS/defects4cpp/issues/66</span>

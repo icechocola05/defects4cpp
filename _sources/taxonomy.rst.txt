@@ -9,6 +9,8 @@ A List of Defect Taxonomy
 
    * - Project
      - # of bugs
+   * - example
+     - 1
    * - proj
      - 28
    * - libtiff

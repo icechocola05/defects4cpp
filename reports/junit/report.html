@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 15-Mar-2022 at 07:03:01 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 22-Mar-2022 at 05:03:07 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -265,8 +265,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.12</td></tr></table>
     <h2>Summary</h2>
-    <p>52 tests ran in 561.51 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">52 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>51 tests ran in 406.40 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">51 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">1 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -277,6 +277,15 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">tests/processor/test_test_command_callback.py::test_check_coverage</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/runner/work/defects4cpp/defects4cpp/tests/processor/test_test_command_callback.py&#x27;, 196, &#x27;Skipped: Temporarily disabled. Should be ran on Docker.&#x27;)<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
@@ -374,9 +383,9 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>usage: __main__.py [-h] [--compilation_db_tool COMPILATION_DB_TOOL] [-b]
                    [-t WORKSPACE]
-                   {coreutils,cppcheck,libchewing,libsndfile,libssh,libtiff,libtiff-sanitizer,libucl,libxml2,openssl,proj,wget2,wireshark,xbps,yara,zsh}
+                   {coreutils,cppcheck,example,libchewing,libsndfile,libssh,libtiff,libtiff-sanitizer,libucl,libxml2,openssl,proj,wget2,wireshark,xbps,yara,zsh}
                    index
-__main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose from &#x27;coreutils&#x27;, &#x27;cppcheck&#x27;, &#x27;libchewing&#x27;, &#x27;libsndfile&#x27;, &#x27;libssh&#x27;, &#x27;libtiff&#x27;, &#x27;libtiff-sanitizer&#x27;, &#x27;libucl&#x27;, &#x27;libxml2&#x27;, &#x27;openssl&#x27;, &#x27;proj&#x27;, &#x27;wget2&#x27;, &#x27;wireshark&#x27;, &#x27;xbps&#x27;, &#x27;yara&#x27;, &#x27;zsh&#x27;)
+__main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose from &#x27;coreutils&#x27;, &#x27;cppcheck&#x27;, &#x27;example&#x27;, &#x27;libchewing&#x27;, &#x27;libsndfile&#x27;, &#x27;libssh&#x27;, &#x27;libtiff&#x27;, &#x27;libtiff-sanitizer&#x27;, &#x27;libucl&#x27;, &#x27;libxml2&#x27;, &#x27;openssl&#x27;, &#x27;proj&#x27;, &#x27;wget2&#x27;, &#x27;wireshark&#x27;, &#x27;xbps&#x27;, &#x27;yara&#x27;, &#x27;zsh&#x27;)
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
@@ -463,7 +472,7 @@ __main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[yara]</td>
-          <td class="col-duration">108.23</td>
+          <td class="col-duration">85.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -473,6 +482,558 @@ __main__.py: error: argument project: invalid choice: &#x27;foobar&#x27; (choose
 [yara] start building
   Starting container
 Creating a new docker image for yara
+verbose
+Step 1/2 : FROM hschoe/defects4cpp-ubuntu:20.04
+
+ ---&gt; 5fed491a4aee
+Step 2/2 : RUN apt-smart -aq &amp;&amp; apt-get install -y libjansson-dev libmagic-dev libssl-dev protobuf-compiler protobuf-c-compiler libprotobuf-c-dev  make flex bison
+
+ ---&gt; Running in ec6af5644552
+
+0% [Working]
+
+            
+
+Get:1 https://mirror.dal.nexril.net/ubuntu focal InRelease [265 kB]
+
+0% [1 InRelease 16.1 kB/265 kB 6%] [Waiting for headers] [Connected to apt.kitw
+
+                                                                               
+0% [Waiting for headers] [Waiting for headers]
+
+                                              
+
+Get:2 https://mirror.dal.nexril.net/ubuntu focal-updates InRelease [114 kB]
+
+0% [2 InRelease 48.9 kB/114 kB 43%] [Waiting for headers] [Waiting for headers]
+
+                                                                               
+0% [Waiting for headers] [Waiting for headers] [Waiting for headers]
+
+                                                                    
+
+Get:3 https://mirror.dal.nexril.net/ubuntu focal-backports InRelease [108 kB]
+
+
+
+0% [3 InRelease 48.9 kB/108 kB 45%] [Waiting for headers] [Waiting for headers]
+
+                                                                               
+
+0% [Waiting for headers] [Waiting for headers]
+
+                                              
+
+Get:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+
+
+0% [4 InRelease 14.0 kB/114 kB 12%] [Waiting for headers]
+
+0% [4 InRelease 14.0 kB/114 kB 12%] [Waiting for headers]
+
+                                                         
+
+Get:5 https://mirror.dal.nexril.net/ubuntu focal/restricted amd64 Packages [33.4 kB]
+
+
+
+0% [5 Packages 33.4 kB/33.4 kB 100%] [4 InRelease 14.0 kB/114 kB 12%] [Waiting 
+
+                                                                               
+
+0% [4 InRelease 14.0 kB/114 kB 12%] [Waiting for headers]
+
+                                                         
+
+Get:6 https://apt.kitware.com/ubuntu focal InRelease [11.0 kB]
+
+
+
+                                                         
+
+0% [4 InRelease 14.0 kB/114 kB 12%]
+
+0% [5 Packages store 0 B] [Waiting for headers] [4 InRelease 14.0 kB/114 kB 12%
+
+                                                                               
+
+0% [Waiting for headers] [4 InRelease 14.0 kB/114 kB 12%]
+
+                                                         
+Get:7 https://mirror.dal.nexril.net/ubuntu focal/main amd64 Packages [1275 kB]
+
+
+
+0% [7 Packages 16.4 kB/1275 kB 1%] [4 InRelease 14.0 kB/114 kB 12%]
+
+0% [7 Packages 360 kB/1275 kB 28%] [4 InRelease 14.0 kB/114 kB 12%]
+
+                                                                   
+0% [Waiting for headers] [4 InRelease 42.5 kB/114 kB 37%]
+
+                                                         
+
+Get:8 https://mirror.dal.nexril.net/ubuntu focal/universe amd64 Packages [11.3 MB]
+
+
+0% [8 Packages 431 kB/11.3 MB 4%] [4 InRelease 42.5 kB/114 kB 37%]
+0% [7 Packages store 0 B] [8 Packages 431 kB/11.3 MB 4%] [4 InRelease 42.5 kB/1
+
+0% [7 Packages store 0 B] [8 Packages 884 kB/11.3 MB 8%] [4 InRelease 42.5 kB/1
+
+0% [7 Packages store 0 B] [8 Packages 3211 kB/11.3 MB 28%] [4 InRelease 56.8 kB
+
+0% [8 Packages 3342 kB/11.3 MB 29%] [4 InRelease 65.4 kB/114 kB 57%] [Waiting f
+
+                                                                               
+Get:9 https://apt.kitware.com/ubuntu focal/main amd64 Packages [41.6 kB]
+
+0% [8 Packages 3997 kB/11.3 MB 35%] [4 InRelease 88.2 kB/114 kB 78%] [9 Package
+
+                                                                               
+0% [8 Packages 4784 kB/11.3 MB 42%] [9 Packages 16.4 kB/41.6 kB 39%]
+
+                                                                    
+0% [8 Packages 4784 kB/11.3 MB 42%]
+
+0% [9 Packages store 0 B] [8 Packages 4784 kB/11.3 MB 42%]
+
+                                                          
+0% [8 Packages 4788 kB/11.3 MB 42%]
+
+43% [8 Packages 5832 kB/11.3 MB 51%]
+
+                                    
+Get:10 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1054 kB]
+
+
+49% [8 Packages 7602 kB/11.3 MB 67%] [10 Packages 5501 B/1054 kB 1%]
+
+                                                                    
+65% [Waiting for headers] [10 Packages 378 kB/1054 kB 36%]
+
+65% [8 Packages store 0 B] [Waiting for headers] [10 Packages 378 kB/1054 kB 36
+
+                                                                               
+
+Get:11 https://mirror.dal.nexril.net/ubuntu focal/multiverse amd64 Packages [177 kB]
+
+
+65% [8 Packages store 0 B] [11 Packages 0 B/177 kB 0%] [10 Packages 420 kB/1054
+
+                                                                               
+
+65% [8 Packages store 0 B] [10 Packages 420 kB/1054 kB 40%]
+
+                                                           
+
+Get:12 https://mirror.dal.nexril.net/ubuntu focal-updates/universe amd64 Packages [1142 kB]
+
+
+
+66% [8 Packages store 0 B] [12 Packages 0 B/1142 kB 0%] [10 Packages 445 kB/105
+
+                                                                               
+
+70% [8 Packages store 0 B] [10 Packages 515 kB/1054 kB 49%]
+
+                                                           
+
+Get:13 https://mirror.dal.nexril.net/ubuntu focal-updates/multiverse amd64 Packages [30.3 kB]
+
+
+
+70% [8 Packages store 0 B] [13 Packages 0 B/30.3 kB 0%] [10 Packages 524 kB/105
+
+                                                                               
+
+70% [8 Packages store 0 B] [10 Packages 524 kB/1054 kB 50%]
+
+                                                           
+
+Get:14 https://mirror.dal.nexril.net/ubuntu focal-updates/main amd64 Packages [2088 kB]
+
+
+
+70% [8 Packages store 0 B] [14 Packages 0 B/2088 kB 0%] [10 Packages 531 kB/105
+
+                                                                               
+
+78% [8 Packages store 0 B] [10 Packages 615 kB/1054 kB 58%]
+
+                                                           
+
+Get:15 https://mirror.dal.nexril.net/ubuntu focal-updates/restricted amd64 Packages [1125 kB]
+
+
+
+78% [8 Packages store 0 B] [15 Packages 0 B/1125 kB 0%] [10 Packages 624 kB/105
+
+                                                                               
+83% [8 Packages store 0 B] [10 Packages 714 kB/1054 kB 68%]
+
+                                                           
+
+Get:16 https://mirror.dal.nexril.net/ubuntu focal-backports/universe amd64 Packages [26.0 kB]
+
+
+83% [8 Packages store 0 B] [16 Packages 0 B/26.0 kB 0%] [10 Packages 718 kB/105
+
+                                                                               
+
+83% [8 Packages store 0 B] [10 Packages 721 kB/1054 kB 68%]
+
+                                                           
+
+Get:17 https://mirror.dal.nexril.net/ubuntu focal-backports/main amd64 Packages [51.2 kB]
+
+
+
+83% [8 Packages store 0 B] [17 Packages 0 B/51.2 kB 0%] [10 Packages 724 kB/105
+
+                                                                               
+
+83% [8 Packages store 0 B] [10 Packages 727 kB/1054 kB 69%]
+
+                                                           
+84% [8 Packages store 0 B]
+
+                          
+
+Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [25.8 kB]
+
+
+
+84% [8 Packages store 0 B] [18 Packages 0 B/25.8 kB 0%]
+
+                                                       
+
+84% [8 Packages store 0 B]
+
+                          
+
+Get:19 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1673 kB]
+
+
+
+84% [8 Packages store 0 B] [19 Packages 0 B/1673 kB 0%]
+
+                                                       
+
+91% [8 Packages store 0 B]
+
+                          
+
+Get:20 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [859 kB]
+
+
+91% [8 Packages store 0 B] [20 Packages 0 B/859 kB 0%]
+
+                                                      
+94% [8 Packages store 0 B]
+
+                          
+94% [Working]
+
+94% [11 Packages store 0 B]
+
+                           
+95% [Working]
+
+95% [12 Packages store 0 B]
+
+                           
+95% [Working]
+
+95% [13 Packages store 0 B]
+
+                           
+96% [Working]
+
+96% [14 Packages store 0 B]
+
+                           
+96% [Working]
+
+96% [15 Packages store 0 B]
+
+                           
+97% [Working]
+
+97% [16 Packages store 0 B]
+
+                           
+97% [Working]
+
+97% [17 Packages store 0 B]
+
+                           
+98% [Working]
+
+98% [10 Packages store 0 B]
+
+                           
+98% [Working]
+
+98% [18 Packages store 0 B]
+
+                           
+99% [Working]
+
+99% [19 Packages store 0 B]
+
+                           
+99% [Working]
+
+99% [20 Packages store 0 B]
+
+                           
+100% [Working]
+              
+Fetched 21.6 MB in 2s (11.6 MB/s)
+
+
+Reading package lists... 0%
+
+
+Reading package lists... 0%
+
+
+Reading package lists... 0%
+
+
+Reading package lists... 6%
+
+
+Reading package lists... 6%
+
+
+Reading package lists... 6%
+
+
+Reading package lists... 6%
+
+
+Reading package lists... 59%
+
+
+Reading package lists... 59%
+
+
+Reading package lists... 60%
+
+
+Reading package lists... 60%
+
+
+Reading package lists... 70%
+
+
+Reading package lists... 70%
+
+
+Reading package lists... 75%
+
+
+Reading package lists... 75%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 81%
+
+
+Reading package lists... 89%
+
+
+Reading package lists... 89%
+
+
+Reading package lists... 94%
+
+
+Reading package lists... 94%
+
+
+Reading package lists... 99%
+
+
+Reading package lists... 99%
+
+
+Reading package lists... 99%
+
+
+Reading package lists... 99%
+
+
+Reading package lists... 99%
+
+Reading package lists... 99%
+
+
+Reading package lists... Done
+
+
+Reading package lists...
+
+Building dependency tree...
+
+Reading state information...
+
+make is already the newest version (4.2.1-1.2).
+make set to manually installed.
+The following additional packages will be installed:
+  libfl-dev libfl2 libjansson4 libprotobuf-c1 libprotobuf-dev
+  libprotobuf-lite17 libprotobuf17 libprotoc17 zlib1g-dev
+Suggested packages:
+  bison-doc flex-doc libssl-doc
+The following NEW packages will be installed:
+  bison flex libfl-dev libfl2 libjansson-dev libjansson4 libmagic-dev
+  libprotobuf-c-dev libprotobuf-c1 libprotobuf-dev libprotobuf-lite17
+  libprotobuf17 libprotoc17 libssl-dev protobuf-c-compiler protobuf-compiler
+  zlib1g-dev
+0 upgraded, 17 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5754 kB of archives.
+After this operation, 29.7 MB of additional disk space will be used.
+Get:1 https://mirror.dal.nexril.net/ubuntu focal/main amd64 flex amd64 2.6.4-6.2 [317 kB]
+Get:2 https://mirror.dal.nexril.net/ubuntu focal/main amd64 bison amd64 2:3.5.1+dfsg-1 [657 kB]
+Get:3 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libfl2 amd64 2.6.4-6.2 [11.5 kB]
+Get:4 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libfl-dev amd64 2.6.4-6.2 [6316 B]
+Get:5 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libjansson4 amd64 2.12-1build1 [28.9 kB]
+Get:6 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libjansson-dev amd64 2.12-1build1 [30.3 kB]
+Get:7 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libmagic-dev amd64 1:5.38-4 [88.3 kB]
+Get:8 https://mirror.dal.nexril.net/ubuntu focal/universe amd64 libprotobuf-c1 amd64 1.3.3-1 [18.9 kB]
+Get:9 https://mirror.dal.nexril.net/ubuntu focal/universe amd64 libprotobuf-c-dev amd64 1.3.3-1 [24.8 kB]
+Get:10 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libprotobuf-lite17 amd64 3.6.1.3-2ubuntu5 [132 kB]
+Get:11 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libprotobuf17 amd64 3.6.1.3-2ubuntu5 [798 kB]
+Get:12 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libprotoc17 amd64 3.6.1.3-2ubuntu5 [646 kB]
+Get:13 https://mirror.dal.nexril.net/ubuntu focal-updates/main amd64 libssl-dev amd64 1.1.1f-1ubuntu2.12 [1584 kB]
+Get:14 https://mirror.dal.nexril.net/ubuntu focal/universe amd64 protobuf-c-compiler amd64 1.3.3-1 [74.4 kB]
+Get:15 https://mirror.dal.nexril.net/ubuntu focal-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-2ubuntu1.2 [155 kB]
+Get:16 https://mirror.dal.nexril.net/ubuntu focal/main amd64 libprotobuf-dev amd64 3.6.1.3-2ubuntu5 [1155 kB]
+Get:17 https://mirror.dal.nexril.net/ubuntu focal/universe amd64 protobuf-compiler amd64 3.6.1.3-2ubuntu5 [27.6 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+
+Fetched 5754 kB in 0s (14.8 MB/s)
+Selecting previously unselected package flex.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 20833 files and directories currently installed.)
+
+Preparing to unpack .../00-flex_2.6.4-6.2_amd64.deb ...
+Unpacking flex (2.6.4-6.2) ...
+Selecting previously unselected package bison.
+Preparing to unpack .../01-bison_2%3a3.5.1+dfsg-1_amd64.deb ...
+Unpacking bison (2:3.5.1+dfsg-1) ...
+Selecting previously unselected package libfl2:amd64.
+Preparing to unpack .../02-libfl2_2.6.4-6.2_amd64.deb ...
+Unpacking libfl2:amd64 (2.6.4-6.2) ...
+Selecting previously unselected package libfl-dev:amd64.
+Preparing to unpack .../03-libfl-dev_2.6.4-6.2_amd64.deb ...
+Unpacking libfl-dev:amd64 (2.6.4-6.2) ...
+Selecting previously unselected package libjansson4:amd64.
+Preparing to unpack .../04-libjansson4_2.12-1build1_amd64.deb ...
+Unpacking libjansson4:amd64 (2.12-1build1) ...
+Selecting previously unselected package libjansson-dev:amd64.
+Preparing to unpack .../05-libjansson-dev_2.12-1build1_amd64.deb ...
+Unpacking libjansson-dev:amd64 (2.12-1build1) ...
+Selecting previously unselected package libmagic-dev:amd64.
+Preparing to unpack .../06-libmagic-dev_1%3a5.38-4_amd64.deb ...
+Unpacking libmagic-dev:amd64 (1:5.38-4) ...
+Selecting previously unselected package libprotobuf-c1:amd64.
+Preparing to unpack .../07-libprotobuf-c1_1.3.3-1_amd64.deb ...
+Unpacking libprotobuf-c1:amd64 (1.3.3-1) ...
+Selecting previously unselected package libprotobuf-c-dev:amd64.
+Preparing to unpack .../08-libprotobuf-c-dev_1.3.3-1_amd64.deb ...
+Unpacking libprotobuf-c-dev:amd64 (1.3.3-1) ...
+Selecting previously unselected package libprotobuf-lite17:amd64.
+Preparing to unpack .../09-libprotobuf-lite17_3.6.1.3-2ubuntu5_amd64.deb ...
+Unpacking libprotobuf-lite17:amd64 (3.6.1.3-2ubuntu5) ...
+Selecting previously unselected package libprotobuf17:amd64.
+Preparing to unpack .../10-libprotobuf17_3.6.1.3-2ubuntu5_amd64.deb ...
+Unpacking libprotobuf17:amd64 (3.6.1.3-2ubuntu5) ...
+Selecting previously unselected package libprotoc17:amd64.
+Preparing to unpack .../11-libprotoc17_3.6.1.3-2ubuntu5_amd64.deb ...
+Unpacking libprotoc17:amd64 (3.6.1.3-2ubuntu5) ...
+Selecting previously unselected package libssl-dev:amd64.
+Preparing to unpack .../12-libssl-dev_1.1.1f-1ubuntu2.12_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1f-1ubuntu2.12) ...
+Selecting previously unselected package protobuf-c-compiler.
+Preparing to unpack .../13-protobuf-c-compiler_1.3.3-1_amd64.deb ...
+Unpacking protobuf-c-compiler (1.3.3-1) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../14-zlib1g-dev_1%3a1.2.11.dfsg-2ubuntu1.2_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.2) ...
+Selecting previously unselected package libprotobuf-dev:amd64.
+Preparing to unpack .../15-libprotobuf-dev_3.6.1.3-2ubuntu5_amd64.deb ...
+Unpacking libprotobuf-dev:amd64 (3.6.1.3-2ubuntu5) ...
+Selecting previously unselected package protobuf-compiler.
+Preparing to unpack .../16-protobuf-compiler_3.6.1.3-2ubuntu5_amd64.deb ...
+Unpacking protobuf-compiler (3.6.1.3-2ubuntu5) ...
+Setting up flex (2.6.4-6.2) ...
+Setting up libprotobuf-lite17:amd64 (3.6.1.3-2ubuntu5) ...
+Setting up libmagic-dev:amd64 (1:5.38-4) ...
+Setting up libprotobuf-c1:amd64 (1.3.3-1) ...
+Setting up libprotobuf-c-dev:amd64 (1.3.3-1) ...
+Setting up libjansson4:amd64 (2.12-1build1) ...
+Setting up libssl-dev:amd64 (1.1.1f-1ubuntu2.12) ...
+Setting up libfl2:amd64 (2.6.4-6.2) ...
+Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.2) ...
+Setting up bison (2:3.5.1+dfsg-1) ...
+update-alternatives: using /usr/bin/bison.yacc to provide /usr/bin/yacc (yacc) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/yacc.1.gz because associated file /usr/share/man/man1/bison.yacc.1.gz (of link group yacc) doesn&#x27;t exist
+
+Setting up libprotobuf17:amd64 (3.6.1.3-2ubuntu5) ...
+Setting up libjansson-dev:amd64 (2.12-1build1) ...
+Setting up libprotoc17:amd64 (3.6.1.3-2ubuntu5) ...
+Setting up protobuf-compiler (3.6.1.3-2ubuntu5) ...
+Setting up libfl-dev:amd64 (2.6.4-6.2) ...
+Setting up libprotobuf-dev:amd64 (3.6.1.3-2ubuntu5) ...
+Setting up protobuf-c-compiler (1.3.3-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Removing intermediate container ec6af5644552
+ ---&gt; c6231826030d
+Successfully built c6231826030d
+Successfully tagged yara/dppgen:latest
   Closing container
 [yara] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;yara&#x27;
@@ -494,7 +1055,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_export_commands[cppcheck]</td>
-          <td class="col-duration">341.24</td>
+          <td class="col-duration">204.59</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -504,6 +1065,12 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
 [cppcheck] start building
   Starting container
 Creating a new docker image for cppcheck
+verbose
+Step 1/1 : FROM hschoe/defects4cpp-ubuntu:18.04
+
+ ---&gt; 476e2b8d0cdf
+Successfully built 476e2b8d0cdf
+Successfully tagged cppcheck/dppgen:latest
   Closing container
 [cppcheck] done
 <br/> -------------------------------Captured log call-------------------------------- <br/>INFO     processor.checkout:(unknown file):0 git-clone &#x27;cppcheck&#x27;
@@ -525,7 +1092,7 @@ INFO     processor.build:(unknown file):0 done<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_build_command.py::test_build_command_rebuild_image</td>
-          <td class="col-duration">28.69</td>
+          <td class="col-duration">31.72</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -607,7 +1174,7 @@ ERROR    processor.checkout:(unknown file):0 git-clone failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_worktree_error</td>
-          <td class="col-duration">0.49</td>
+          <td class="col-duration">0.47</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -628,7 +1195,7 @@ ERROR    processor.checkout:(unknown file):0 git-worktree failed.
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_checkout_error</td>
-          <td class="col-duration">0.47</td>
+          <td class="col-duration">0.38</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -648,7 +1215,7 @@ ERROR    processor.checkout:(unknown file):0 git-checkout failed (not a git repo
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_submodule_init_error</td>
-          <td class="col-duration">2.79</td>
+          <td class="col-duration">2.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -681,7 +1248,7 @@ fatal: &#x27;<br/></div></td></tr></tbody>
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_checkout.py::test_git_apply_patch_error_patch_could_not_be_applied</td>
-          <td class="col-duration">0.51</td>
+          <td class="col-duration">0.40</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -724,7 +1291,7 @@ hint: Use &#x27;git am --show-current-patch=diff&#x27; to see the failed patch&#
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_container</td>
-          <td class="col-duration">10.53</td>
+          <td class="col-duration">10.82</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -740,7 +1307,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_docker.py::test_docker_mount_directory</td>
-          <td class="col-duration">20.98</td>
+          <td class="col-duration">21.63</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -880,22 +1447,35 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (yara-dpp-gen
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/processor/test_test_command_callback.py::test_check_coverage</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command</td>
-          <td class="col-duration">21.10</td>
+          <td class="col-duration">21.84</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>  Starting container
 Creating a new docker image for test_run_command
+verbose
+Step 1/5 : FROM ubuntu:20.04
+
+ ---&gt; 54c9d81cbb44
+Step 2/5 : RUN useradd --uid 1001 --home-dir /home/workspace --shell /bin/bash defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; 4e0cd9dbc4e2
+Step 3/5 : USER defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; fe71fe637754
+Step 4/5 : ENV USER defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; b5746f05e3b5
+Step 5/5 : WORKDIR /home/workspace
+
+ ---&gt; Using cache
+ ---&gt; 8458db0a75da
+Successfully built 8458db0a75da
+Successfully tagged test_run_command/dppgen:latest
   Closing container
   Starting container
   Closing container
@@ -915,12 +1495,34 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_test_command_callback.py::test_run_command_as_script</td>
-          <td class="col-duration">21.02</td>
+          <td class="col-duration">21.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>  Starting container
 Creating a new docker image for test_run_command_as_script
+verbose
+Step 1/5 : FROM ubuntu:20.04
+
+ ---&gt; 54c9d81cbb44
+Step 2/5 : RUN useradd --uid 1001 --home-dir /home/workspace --shell /bin/bash defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; 4e0cd9dbc4e2
+Step 3/5 : USER defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; fe71fe637754
+Step 4/5 : ENV USER defects4cpp
+
+ ---&gt; Using cache
+ ---&gt; b5746f05e3b5
+Step 5/5 : WORKDIR /home/workspace
+
+ ---&gt; Using cache
+ ---&gt; 8458db0a75da
+Successfully built 8458db0a75da
+Successfully tagged test_run_command_as_script/dppgen:latest
   Closing container
   Starting container
   Closing container
@@ -940,7 +1542,7 @@ INFO     processor.core.docker:(unknown file):0 container.__exit__ (test_run_com
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_fixed</td>
-          <td class="col-duration">2.54</td>
+          <td class="col-duration">2.16</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -964,7 +1566,7 @@ INFO     processor.checkout:(unknown file):0 creating &#x27;.defects4cpp.json&#x
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/processor/test_vcs.py::test_checkout_buggy</td>
-          <td class="col-duration">2.61</td>
+          <td class="col-duration">2.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
