@@ -529,30 +529,18 @@
     <span class="k">def</span> <span class="nf">_create_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TestCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_cases</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">SetupTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">test_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">TestCommandScript</span><span class="p">(</span>
-                        <span class="n">case</span><span class="p">,</span>
-                        <span class="n">test_cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
-                        <span class="n">test_cmd</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span>
-                    <span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">test_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">TestCommandScript</span><span class="p">(</span>
-                        <span class="n">case</span><span class="p">,</span>
-                        <span class="n">test_cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
-                        <span class="n">test_cmd</span><span class="o">.</span><span class="n">lines</span>
-                    <span class="p">)</span>
+            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="k">else</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">test_cmd</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">TestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_coverage_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TestCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_cases</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">SetupTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">test_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="n">CoverageTestCommandScript</span><span class="p">(</span>
-                    <span class="n">case</span><span class="p">,</span>
-                    <span class="n">test_cmd</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
-                    <span class="n">test_cmd</span><span class="o">.</span><span class="n">lines</span>
-                <span class="p">)</span>
+            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="k">else</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">test_cmd</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">CoverageTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">gcov_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">GcovCommandScript</span><span class="p">(</span>
                     <span class="n">case</span><span class="p">,</span>

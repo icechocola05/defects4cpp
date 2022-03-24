@@ -15,12 +15,12 @@ A List of Defect Taxonomy
      - 28
    * - libtiff
      - 6
-   * - libtiff-sanitizer
-     - 3
    * - cppcheck
      - 30
    * - libchewing
      - 8
+   * - libtiff_sanitizer
+     - 3
    * - yara
      - 6
    * - libucl
