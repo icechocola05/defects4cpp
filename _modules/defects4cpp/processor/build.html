@@ -293,8 +293,16 @@
             <span class="n">nargs</span><span class="o">=</span><span class="s2">"?"</span><span class="p">,</span>
             <span class="n">action</span><span class="o">=</span><span class="n">ValidateExportPath</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">"-u"</span><span class="p">,</span>
+            <span class="s2">"--uid"</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">Path</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">"uid"</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">"set uid of user defects4cpp"</span><span class="p">,</span>
+            <span class="n">nargs</span><span class="o">=</span><span class="s2">"?"</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">"d++ build PATH [--coverage] [-v|--verbose] [-e|--export[=EXPORT_PATH]]"</span>
+            <span class="s2">"d++ build PATH [--coverage] [-v|--verbose] [-u|--uid[=UID_DPP_DOCKER_USER] [-e|--export[=EXPORT_PATH]]"</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
             <span class="sd">"""\</span>

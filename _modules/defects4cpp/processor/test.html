@@ -483,7 +483,10 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">case</span><span class="p">,</span>
             <span class="n">CommandType</span><span class="o">.</span><span class="n">Docker</span><span class="p">,</span>
-            <span class="p">[</span><span class="sa">f</span><span class="s2">"gcovr </span><span class="si">{</span><span class="n">exclude_flags</span><span class="si">}</span><span class="s2"> --keep --use-gcov-files --json --output gcov/summary.json gcov"</span><span class="p">]</span>
+            <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">"gcovr </span><span class="si">{</span><span class="n">exclude_flags</span><span class="si">}</span><span class="s2"> --keep --use-gcov-files --json-pretty --json gcov/summary.json gcov"</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"gcovr </span><span class="si">{</span><span class="n">exclude_flags</span><span class="si">}</span><span class="s2"> --keep --use-gcov-files --html gcov/summary.html gcov"</span><span class="p">,</span>
+            <span class="p">]</span>
         <span class="p">)</span></div></div>
 
 
@@ -716,9 +719,9 @@
 <span class="sd">        None</span>
 <span class="sd">        """</span>
         <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">summary_dir</span><span class="p">(</span><span class="n">script</span><span class="o">.</span><span class="n">case</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">script</span><span class="o">.</span><span class="n">case</span><span class="si">}</span><span class="s2">.output"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">script</span><span class="o">.</span><span class="n">case</span><span class="si">}</span><span class="s2">.output"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
             <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">script</span><span class="o">.</span><span class="n">captured_output</span><span class="o">.</span><span class="n">stream</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">script</span><span class="o">.</span><span class="n">case</span><span class="si">}</span><span class="s2">.test"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">)</span> <span class="k">as</span> <span class="n">result_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">script</span><span class="o">.</span><span class="n">case</span><span class="si">}</span><span class="s2">.test"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">result_file</span><span class="p">:</span>
             <span class="n">result_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                 <span class="s2">"passed"</span> <span class="k">if</span> <span class="n">script</span><span class="o">.</span><span class="n">captured_output</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"failed"</span>
             <span class="p">)</span>

@@ -223,8 +223,12 @@ For instance, if you want to checkout <cite>wireshark</cite> project:</p>
 $ d++ test /path/to/wireshark/fixed#1
 </pre></div>
 </div>
+<p>You can run some test cases separately like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ d++ test /path/to/wireshark/fixed#1 --case 1-4,7
+</pre></div>
+</div>
 <p>However, you are probably interested in a snapshot where a buggy commit is just made.
-The command is exactly the same except that <code class="docutils literal notranslate"><span class="pre">--buggy</span></code> flag is set:</p>
+The command is exactly the same except that <code class="docutils literal notranslate"><span class="pre">--buggy</span></code> flag is set.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ d++ checkout wireshark 1 --buggy
 </pre></div>
 </div>
@@ -233,7 +237,7 @@ The command is exactly the same except that <code class="docutils literal notran
 $ d++ test /path/to/wireshark/buggy#1 --coverage
 </pre></div>
 </div>
-<p>You’ll see the artifact is generated in the current directory:</p>
+<p>You’ll see the artifact is generated in the current directory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
 /path/to/wireshark-fixed#1-1
 /path/to/wireshark-fixed#1-2
@@ -281,7 +285,7 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <section id="d-build">
 <h2 id="d-build">d++ build<a class="headerlink" href="#d-build" title="Permalink to this headline">¶</a></h2>
 <p>Build project inside docker.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ build PATH [--coverage] [-v|--verbose] [-e|--export[=EXPORT_PATH]]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ build PATH [--coverage] [-v|--verbose] [-u|--uid[=UID_DPP_DOCKER_USER] [-e|--export[=EXPORT_PATH]]</span>
 </pre></div>
 </div>
 <dl class="std option">
@@ -323,6 +327,11 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <dt class="sig sig-object std" id="cmdoption-d-build-e">
 <span id="cmdoption-d-build-export"></span><span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--export</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d-build-e" title="Permalink to this definition">¶</a></dt>
 <dd><p>export build commands.</p>
+</dd></dl>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-d-build-u">
+<span id="cmdoption-d-build-uid"></span><span class="sig-name descname"><span class="pre">-u</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;uid&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--uid</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;uid&gt;</span></span><a class="headerlink" href="#cmdoption-d-build-u" title="Permalink to this definition">¶</a></dt>
+<dd><p>set uid of user defects4cpp</p>
 </dd></dl>
 </section>
 <section id="d-test">
