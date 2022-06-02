@@ -22,8 +22,8 @@
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
-            26 statements &nbsp;
-            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">26 run</button>
+            27 statements &nbsp;
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">27 run</button>
             <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">0 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
         </h2>
@@ -182,13 +182,20 @@
     <p id="t128" class="pln"><span class="n"><a href="#t128">128</a></span><span class="t">        <span class="nam">help</span><span class="op">=</span><span class="str">"set 'key=value' environment variables within container. (can be used multiple times)"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p id="t129" class="pln"><span class="n"><a href="#t129">129</a></span><span class="t">        <span class="nam">action</span><span class="op">=</span><span class="nam">ValidateEnviron</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p id="t130" class="pln"><span class="n"><a href="#t130">130</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t131" class="run"><span class="n"><a href="#t131">131</a></span><span class="t">    <span class="key">return</span> <span class="nam">parser</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t131" class="run"><span class="n"><a href="#t131">131</a></span><span class="t">    <span class="nam">parser</span><span class="op">.</span><span class="nam">add_argument</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t132" class="pln"><span class="n"><a href="#t132">132</a></span><span class="t">        <span class="str">"-j"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t133" class="pln"><span class="n"><a href="#t133">133</a></span><span class="t">        <span class="str">"--jobs"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t134" class="pln"><span class="n"><a href="#t134">134</a></span><span class="t">        <span class="nam">type</span><span class="op">=</span><span class="nam">int</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t135" class="pln"><span class="n"><a href="#t135">135</a></span><span class="t">        <span class="nam">help</span><span class="op">=</span><span class="str">"number of jobs to run in parallel."</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t136" class="pln"><span class="n"><a href="#t136">136</a></span><span class="t">        <span class="nam">default</span><span class="op">=</span><span class="num">1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t137" class="pln"><span class="n"><a href="#t137">137</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t138" class="run"><span class="n"><a href="#t138">138</a></span><span class="t">    <span class="key">return</span> <span class="nam">parser</span>&nbsp;</span><span class="r"></span></p>
 </div>
 <div id="footer">
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
-            created at 2022-04-04 08:49 +0000
+            created at 2022-06-02 08:03 +0000
         </p>
     </div>
 </div>

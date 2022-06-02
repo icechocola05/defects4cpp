@@ -220,6 +220,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    --additional-gcov-options
+
+      <ul>
+        <li><a href="guide.html#cmdoption-d-test-additional-gcov-options">d++-test command line option</a>
+</li>
+      </ul></li>
+      <li>
     --buggy
 
       <ul>
@@ -278,6 +285,15 @@
         <li><a href="guide.html#cmdoption-d-checkout-h">d++-checkout command line option</a>
 </li>
         <li><a href="guide.html#cmdoption-d-test-h">d++-test command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --jobs &lt;jobs&gt;
+
+      <ul>
+        <li><a href="guide.html#cmdoption-d-build-j">d++-build command line option</a>
+</li>
+        <li><a href="guide.html#cmdoption-d-test-j">d++-test command line option</a>
 </li>
       </ul></li>
       <li>
@@ -354,6 +370,15 @@
 </li>
       </ul></li>
       <li>
+    -j &lt;jobs&gt;
+
+      <ul>
+        <li><a href="guide.html#cmdoption-d-build-j">d++-build command line option</a>
+</li>
+        <li><a href="guide.html#cmdoption-d-test-j">d++-test command line option</a>
+</li>
+      </ul></li>
+      <li>
     -t
 
       <ul>
@@ -385,6 +410,8 @@
       <li><a href="api/_autosummary/defects4cpp.processor.core.command.AbstractCommandRegistryMeta.html#defects4cpp.processor.core.command.AbstractCommandRegistryMeta.__init__">__init__() (AbstractCommandRegistryMeta method)</a>
 
       <ul>
+        <li><a href="api/_autosummary/defects4cpp.processor.test.AdditionalGcovOptions.html#defects4cpp.processor.test.AdditionalGcovOptions.__init__">(AdditionalGcovOptions method)</a>
+</li>
         <li><a href="api/_autosummary/defects4cpp.processor.core.command.BaseCommandRegistry.html#defects4cpp.processor.core.command.BaseCommandRegistry.__init__">(BaseCommandRegistry method)</a>
 </li>
         <li><a href="api/_autosummary/defects4cpp.processor.build.BuildCommand.html#defects4cpp.processor.build.BuildCommand.__init__">(BuildCommand method)</a>
@@ -481,6 +508,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/_autosummary/defects4cpp.processor.core.command.AbstractCommandRegistryMeta.html#defects4cpp.processor.core.command.AbstractCommandRegistryMeta">AbstractCommandRegistryMeta (class in defects4cpp.processor.core.command)</a>
+</li>
+      <li><a href="api/_autosummary/defects4cpp.processor.test.AdditionalGcovOptions.html#defects4cpp.processor.test.AdditionalGcovOptions">AdditionalGcovOptions (class in defects4cpp.processor.test)</a>
 </li>
       <li><a href="api/_autosummary/defects4cpp.processor.build.BuildCommandScript.html#defects4cpp.processor.build.BuildCommandScript.after">after() (BuildCommandScript method)</a>
 
@@ -606,6 +635,8 @@
 </li>
         <li><a href="guide.html#cmdoption-d-build-h">--help</a>
 </li>
+        <li><a href="guide.html#cmdoption-d-build-j">--jobs &lt;jobs&gt;</a>
+</li>
         <li><a href="guide.html#cmdoption-d-build-rebuild-image">--rebuild-image</a>
 </li>
         <li><a href="guide.html#cmdoption-d-build-u">--uid &lt;uid&gt;</a>
@@ -615,6 +646,8 @@
         <li><a href="guide.html#cmdoption-d-build-e">-e</a>
 </li>
         <li><a href="guide.html#cmdoption-d-build-h">-h</a>
+</li>
+        <li><a href="guide.html#cmdoption-d-build-j">-j &lt;jobs&gt;</a>
 </li>
         <li><a href="guide.html#cmdoption-d-build-u">-u &lt;uid&gt;</a>
 </li>
@@ -650,6 +683,8 @@
     d++-test command line option
 
       <ul>
+        <li><a href="guide.html#cmdoption-d-test-additional-gcov-options">--additional-gcov-options</a>
+</li>
         <li><a href="guide.html#cmdoption-d-test-c">--case</a>
 </li>
         <li><a href="guide.html#cmdoption-d-test-compilation_db_tool">--compilation_db_tool</a>
@@ -660,6 +695,8 @@
 </li>
         <li><a href="guide.html#cmdoption-d-test-h">--help</a>
 </li>
+        <li><a href="guide.html#cmdoption-d-test-j">--jobs &lt;jobs&gt;</a>
+</li>
         <li><a href="guide.html#cmdoption-d-test-output-dir">--output-dir</a>
 </li>
         <li><a href="guide.html#cmdoption-d-test-rebuild-image">--rebuild-image</a>
@@ -669,6 +706,8 @@
         <li><a href="guide.html#cmdoption-d-test-c">-c</a>
 </li>
         <li><a href="guide.html#cmdoption-d-test-h">-h</a>
+</li>
+        <li><a href="guide.html#cmdoption-d-test-j">-j &lt;jobs&gt;</a>
 </li>
         <li><a href="guide.html#cmdoption-d-test-v">-v</a>
 </li>
@@ -738,6 +777,8 @@
         <li><a href="api/_autosummary/defects4cpp.message.message.html#module-defects4cpp.message.message">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     defects4cpp.processor.build
 
@@ -745,8 +786,6 @@
         <li><a href="api/_autosummary/defects4cpp.processor.build.html#module-defects4cpp.processor.build">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     defects4cpp.processor.checkout
 
@@ -838,6 +877,8 @@
       <li><a href="api/_autosummary/defects4cpp.processor.core.command.DockerCommandScript.html#defects4cpp.processor.core.command.DockerCommandScript">DockerCommandScript (class in defects4cpp.processor.core.command)</a>
 </li>
       <li><a href="api/_autosummary/defects4cpp.processor.core.command.DockerCommandScriptGenerator.html#defects4cpp.processor.core.command.DockerCommandScriptGenerator">DockerCommandScriptGenerator (class in defects4cpp.processor.core.command)</a>
+</li>
+      <li><a href="api/_autosummary/defects4cpp.errors.argparser.DppAdditionalGcovOptionsWithoutCoverage.html#defects4cpp.errors.argparser.DppAdditionalGcovOptionsWithoutCoverage">DppAdditionalGcovOptionsWithoutCoverage</a>
 </li>
       <li><a href="api/_autosummary/defects4cpp.errors.argparser.DppArgparseConfigCorruptedError.html#defects4cpp.errors.argparser.DppArgparseConfigCorruptedError">DppArgparseConfigCorruptedError</a>
 </li>

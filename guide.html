@@ -285,7 +285,7 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <section id="d-build">
 <h2 id="d-build">d++ build<a class="headerlink" href="#d-build" title="Permalink to this headline">¶</a></h2>
 <p>Build project inside docker.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ build PATH [--coverage] [-v|--verbose] [-u|--uid[=UID_DPP_DOCKER_USER] [-e|--export[=EXPORT_PATH]]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ build PATH [-j|--jobs=JOBS] [--coverage] [-v|--verbose] [-u|--uid[=UID_DPP_DOCKER_USER] [-e|--export[=EXPORT_PATH]]</span>
 </pre></div>
 </div>
 <dl class="std option">
@@ -324,6 +324,11 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <dd><p>set ‘key=value’ environment variables within container. (can be used multiple times)</p>
 </dd></dl>
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-d-build-j">
+<span id="cmdoption-d-build-jobs"></span><span class="sig-name descname"><span class="pre">-j</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;jobs&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--jobs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;jobs&gt;</span></span><a class="headerlink" href="#cmdoption-d-build-j" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of jobs to run in parallel.</p>
+</dd></dl>
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-d-build-e">
 <span id="cmdoption-d-build-export"></span><span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--export</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d-build-e" title="Permalink to this definition">¶</a></dt>
 <dd><p>export build commands.</p>
@@ -337,7 +342,7 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <section id="d-test">
 <h2 id="d-test">d++ test<a class="headerlink" href="#d-test" title="Permalink to this headline">¶</a></h2>
 <p>Run testsuite inside docker. The project must have been built previously.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ test PATH [--coverage] [-v|--verbose] [-c|--case=expr] [--output-dir=directory]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: d++ test PATH [-j|--jobs=JOBS] [--coverage [--additional-gcov-options=ADDITIONAL_GCOV_OPTIONS]] [-v|--verbose] [-c|--case=expr] [--output-dir=directory]</span>
 </pre></div>
 </div>
 <dl class="std option">
@@ -376,6 +381,11 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <dd><p>set ‘key=value’ environment variables within container. (can be used multiple times)</p>
 </dd></dl>
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-d-test-j">
+<span id="cmdoption-d-test-jobs"></span><span class="sig-name descname"><span class="pre">-j</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;jobs&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--jobs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;jobs&gt;</span></span><a class="headerlink" href="#cmdoption-d-test-j" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of jobs to run in parallel.</p>
+</dd></dl>
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-d-test-c">
 <span id="cmdoption-d-test-case"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--case</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d-test-c" title="Permalink to this definition">¶</a></dt>
 <dd><p>expression to filter cases (see <a class="reference internal" href="#case-example">example</a>)</p>
@@ -384,6 +394,11 @@ $ d++ test /path/to/wireshark/buggy#1 --coverage
 <dt class="sig sig-object std" id="cmdoption-d-test-output-dir">
 <span class="sig-name descname"><span class="pre">--output-dir</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d-test-output-dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>output directory to generate coverage data instead of the current directory.</p>
+</dd></dl>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-d-test-additional-gcov-options">
+<span class="sig-name descname"><span class="pre">--additional-gcov-options</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-d-test-additional-gcov-options" title="Permalink to this definition">¶</a></dt>
+<dd><p>set additional options to gcov command</p>
 </dd></dl>
 </section>
 <p id="case-example">Case Expression:</p>

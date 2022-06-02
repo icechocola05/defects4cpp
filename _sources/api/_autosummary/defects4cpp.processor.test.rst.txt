@@ -19,6 +19,7 @@
       :toctree:
       :template: autosummary_class.rst
    
+      AdditionalGcovOptions
       CapturedOutput
       CapturedOutputAttributeMixin
       CoverageTestCommandScript

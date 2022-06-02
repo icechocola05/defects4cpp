@@ -206,8 +206,10 @@
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">config</span>
 
-<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppArgparseFileNotFoundError</span><span class="p">,</span> <span class="n">DppCaseExpressionInternalError</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">DppArgparseFileNotFoundError</span><span class="p">,</span> <span class="n">DppCaseExpressionInternalError</span><span class="p">,</span> \
+    <span class="n">DppAdditionalGcovOptionsWithoutCoverage</span>
 <span class="kn">from</span> <span class="nn">errors.argparser</span> <span class="kn">import</span> <span class="n">DppArgparseInvalidCaseExpressionError</span>
 <span class="kn">from</span> <span class="nn">message</span> <span class="kn">import</span> <span class="n">message</span>
 <span class="kn">from</span> <span class="nn">processor.core.argparser</span> <span class="kn">import</span> <span class="n">create_common_project_parser</span>
@@ -218,6 +220,15 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">processor.core.data</span> <span class="kn">import</span> <span class="n">Worktree</span>
 <span class="kn">from</span> <span class="nn">taxonomy</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">CommandType</span><span class="p">,</span> <span class="n">Defect</span><span class="p">,</span> <span class="n">MetaData</span>
+
+
+<div class="viewcode-block" id="AdditionalGcovOptions"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.AdditionalGcovOptions.html#defects4cpp.processor.test.AdditionalGcovOptions">[docs]</a><span class="k">class</span> <span class="nc">AdditionalGcovOptions</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Additional options for gcov command.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">option_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">DPP_ADDITIONAL_GCOV_OPTIONS</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ValidateCase"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.ValidateCase.html#defects4cpp.processor.test.ValidateCase">[docs]</a><span class="k">class</span> <span class="nc">ValidateCase</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
@@ -258,7 +269,7 @@
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">DppCaseExpressionInternalError</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
 
-        <span class="n">num_cases</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">defects</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">defects</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">extra_tests</span><span class="p">)</span>
+        <span class="n">num_cases</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">defects</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">num_cases</span>
         <span class="n">expr_tokens</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)</span>
         <span class="n">included_cases</span> <span class="o">=</span> <span class="n">validate_each_case</span><span class="p">(</span><span class="n">num_cases</span><span class="p">,</span> <span class="n">expr2set</span><span class="p">(</span><span class="n">expr_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="n">excluded_cases</span> <span class="o">=</span> <span class="n">validate_each_case</span><span class="p">(</span>
@@ -514,7 +525,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_test_cases</span> <span class="o">=</span> <span class="n">test_cases</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="n">callbacks</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span> <span class="o">=</span> <span class="n">defect</span><span class="o">.</span><span class="n">extra_tests</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">gcov</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common_gcov_replaced</span><span class="o">.</span><span class="n">gcov</span></div>
 
 <div class="viewcode-block" id="TestCommandScriptGenerator.create"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TestCommandScriptGenerator.html#defects4cpp.processor.test.TestCommandScriptGenerator.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TestCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_attach</span><span class="p">(</span><span class="n">CapturedOutputAttributeMixin</span><span class="p">,</span> <span class="s2">"_captured_output"</span><span class="p">)</span>
@@ -532,16 +543,16 @@
     <span class="k">def</span> <span class="nf">_create_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TestCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_cases</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">SetupTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>
-            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="k">else</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">)</span> <span class="k">else</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">test_cmd</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">TestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_create_coverage_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TestCommandScript</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_cases</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">SetupTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>
-            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="k">else</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">test_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_command</span> <span class="k">if</span> <span class="n">case</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">)</span> <span class="k">else</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">[</span><span class="n">case</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extra_tests</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">test_cmd</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">CoverageTestCommandScript</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">gcov_cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gcov</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
@@ -581,7 +592,16 @@
             <span class="n">dest</span><span class="o">=</span><span class="s2">"output_dir"</span><span class="p">,</span>
             <span class="n">action</span><span class="o">=</span><span class="n">ValidateOutputDirectory</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">"d++ test PATH [--coverage] [-v|--verbose] [-c|--case=expr] [--output-dir=directory]"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">"--additional-gcov-options"</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">"additional_gcov_options"</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="n">AdditionalGcovOptions</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">"set additional options to gcov command"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">"d++ test PATH [-j|--jobs=JOBS] "</span> \
+                            <span class="s2">"[--coverage [--additional-gcov-options=ADDITIONAL_GCOV_OPTIONS]] "</span> \
+                            <span class="s2">"[-v|--verbose] [-c|--case=expr] [--output-dir=directory]"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
             <span class="sd">"""\</span>
 <span class="sd">        Run testsuite inside docker. The project must have been built previously.</span>
@@ -597,14 +617,19 @@
 <div class="viewcode-block" id="TestCommand.create_script_generator"><a class="viewcode-back" href="../../../api/_autosummary/defects4cpp.processor.test.TestCommand.html#defects4cpp.processor.test.TestCommand.create_script_generator">[docs]</a>    <span class="k">def</span> <span class="nf">create_script_generator</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DockerCommandScriptGenerator</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">coverage</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">additional_gcov_options</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DppAdditionalGcovOptionsWithoutCoverage</span><span class="p">()</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">metadata</span>
         <span class="n">worktree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">worktree</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">worktree</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coverage</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">coverage</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">output_dir</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">output_dir</span>
 
+        <span class="c1"># FIXME: metadata's values are fixed when metadata.commonXXXX is called</span>
+        <span class="c1">#        When we call metadata.common after calling metadata.common_gcov_replace,</span>
+        <span class="c1">#        metadata.common.gcov_replace.gcov will not not replaced</span>
         <span class="n">test_command</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">test_coverage_command</span>
+            <span class="n">metadata</span><span class="o">.</span><span class="n">common_gcov_replaced</span><span class="o">.</span><span class="n">test_coverage_command</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coverage</span>
             <span class="k">else</span> <span class="n">metadata</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">test_command</span>
         <span class="p">)</span>
@@ -617,11 +642,11 @@
         <span class="n">number_of_extra_testcases</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_defect</span><span class="o">.</span><span class="n">extra_tests</span><span class="p">)</span> <span class="k">if</span> <span class="n">selected_defect</span><span class="o">.</span><span class="n">extra_tests</span> <span class="k">else</span> <span class="mi">0</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">case</span><span class="p">:</span>
-            <span class="n">cases</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">selected_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="n">number_of_extra_testcases</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">cases</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">selected_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">included_cases</span><span class="p">,</span> <span class="n">excluded_cases</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">case</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">included_cases</span><span class="p">:</span>
-                <span class="n">included_cases</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">selected_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="n">number_of_extra_testcases</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="n">included_cases</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">selected_defect</span><span class="o">.</span><span class="n">num_cases</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">cases</span> <span class="o">=</span> <span class="n">included_cases</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">excluded_cases</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">TestCommandScriptGenerator</span><span class="p">(</span>

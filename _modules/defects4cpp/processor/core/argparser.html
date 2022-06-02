@@ -324,6 +324,13 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">"set 'key=value' environment variables within container. (can be used multiple times)"</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="n">ValidateEnviron</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">"-j"</span><span class="p">,</span>
+        <span class="s2">"--jobs"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">"number of jobs to run in parallel."</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">parser</span></div>
 </pre></div>
 

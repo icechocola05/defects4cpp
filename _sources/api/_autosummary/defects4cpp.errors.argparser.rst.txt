@@ -22,6 +22,7 @@
    .. autosummary::
       :toctree:
    
+      DppAdditionalGcovOptionsWithoutCoverage
       DppArgparseConfigCorruptedError
       DppArgparseDefectIndexError
       DppArgparseError
