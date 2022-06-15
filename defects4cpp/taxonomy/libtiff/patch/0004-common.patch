@@ -25,7 +25,7 @@ index bdf754c3..4a879b25 100644
 @@ -153,9 +153,30 @@ static TIFF* openSrcImage (char **imageSpec)
  	return tif;
  }
- 
+
 +#ifdef DPP_ENABLE_GCOV
 +#include <signal.h>
 +static struct sigaction dpp_gcov_sigaction;
@@ -53,6 +53,6 @@ index bdf754c3..4a879b25 100644
  	uint16 defconfig = (uint16) -1;
  	uint16 deffillorder = 0;
  	uint32 deftilewidth = (uint32) -1;
--- 
+--
 2.25.1
 
